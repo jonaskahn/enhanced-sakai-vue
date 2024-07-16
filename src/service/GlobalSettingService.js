@@ -1,6 +1,16 @@
 import settings from '@/constants/settings';
 
 export default class GlobalSettingService {
+    static instance = new GlobalSettingService();
+
+    getCurrentLocale() {
+        return localStorage.getItem(settings.CURRENT_LOCALE) || 'vi-VN';
+    }
+
+    async setCurrentLocale(value) {
+        return localStorage.setItem(settings.CURRENT_LOCALE, value);
+    }
+
     useRippleMode() {
         return localStorage.getItem(settings.RIPPLE_MODE) === 'on';
     }
@@ -10,19 +20,19 @@ export default class GlobalSettingService {
     }
 
     useFocusRing() {
-        return localStorage.getItem(settings.PREFER_THEME_FOCUS_RING) === 'on'
+        return localStorage.getItem(settings.PREFER_THEME_FOCUS_RING) === 'on';
     }
 
     async setFocusRing(value) {
-        return localStorage.setItem(settings.PREFER_THEME_FOCUS_RING, value ? 'on' : 'off')
+        return localStorage.setItem(settings.PREFER_THEME_FOCUS_RING, value ? 'on' : 'off');
     }
 
     useCompactMaterial() {
-        return localStorage.getItem(settings.PREFER_THEME_COMPACT_MATERIAL) === 'on'
+        return localStorage.getItem(settings.PREFER_THEME_COMPACT_MATERIAL) === 'on';
     }
 
     async setCompactMaterial(value) {
-        localStorage.setItem(settings.PREFER_THEME_COMPACT_MATERIAL, value ? 'on' : 'off')
+        localStorage.setItem(settings.PREFER_THEME_COMPACT_MATERIAL, value ? 'on' : 'off');
     }
 
     getInputStyle() {

@@ -105,7 +105,15 @@ const getSeverity = (product) => {
                                                 <div class="text-lg font-medium text-900 mt-2">{{ item.name }}</div>
                                             </div>
                                             <div class="surface-100 p-1" style="border-radius: 30px">
-                                                <div class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2" style="border-radius: 30px; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.06)">
+                                                <div
+                                                    class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2"
+                                                    style="
+                                                        border-radius: 30px;
+                                                        box-shadow:
+                                                            0px 1px 2px 0px rgba(0, 0, 0, 0.04),
+                                                            0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+                                                    "
+                                                >
                                                     <span class="text-900 font-medium text-sm">{{ item.rating }}</span>
                                                     <i class="pi pi-star-fill text-yellow-500"></i>
                                                 </div>
@@ -141,7 +149,15 @@ const getSeverity = (product) => {
                                                 <div class="text-lg font-medium text-900 mt-1">{{ item.name }}</div>
                                             </div>
                                             <div class="surface-100 p-1" style="border-radius: 30px">
-                                                <div class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2" style="border-radius: 30px; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.06)">
+                                                <div
+                                                    class="surface-0 flex align-items-center gap-2 justify-content-center py-1 px-2"
+                                                    style="
+                                                        border-radius: 30px;
+                                                        box-shadow:
+                                                            0px 1px 2px 0px rgba(0, 0, 0, 0.04),
+                                                            0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+                                                    "
+                                                >
                                                     <span class="text-900 font-medium text-sm">{{ item.rating }}</span>
                                                     <i class="pi pi-star-fill text-yellow-500"></i>
                                                 </div>

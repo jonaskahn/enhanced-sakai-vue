@@ -2,19 +2,19 @@
 import { onBeforeMount } from 'vue';
 import GlobalSettingService from '@/service/GlobalSettingService';
 
-const globalSettingService = new GlobalSettingService()
+const globalSettingService = GlobalSettingService.instance;
 
 onBeforeMount(() => {
-    const preferredTheme = globalSettingService.getTheme()
+    const preferredTheme = globalSettingService.getTheme();
     if (!preferredTheme) {
-        return
+        return;
     }
-    if(preferredTheme.includes('dark') ) {
+    if (preferredTheme.includes('dark')) {
         globalSettingService.setTheme(preferredTheme);
     }
     const themeLink = document.getElementById('theme-css');
     themeLink.setAttribute('href', `/themes/${preferredTheme}/theme.css`);
-})
+});
 </script>
 
 <template>

@@ -6,7 +6,7 @@
 - I will try to keep-track with Sakai Vue for every new release.
 
 ## Todo
-- [ ] i18n support
+- [x] i18n support
 
 -------------------------------------
 

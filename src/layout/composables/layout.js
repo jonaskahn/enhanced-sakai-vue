@@ -1,7 +1,7 @@
 import { toRefs, reactive, computed } from 'vue';
 import GlobalSettingService from '@/service/GlobalSettingService';
 
-const globalSettingService = new GlobalSettingService();
+const globalSettingService = GlobalSettingService.instance;
 
 const layoutConfig = reactive({
     ripple: globalSettingService.useRippleMode(),
@@ -27,8 +27,7 @@ const layoutState = reactive({
 export function useLayout() {
     const setScale = (scale) => {
         layoutConfig.scale = scale;
-        globalSettingService.setScaleFactor(scale)
-
+        globalSettingService.setScaleFactor(scale);
     };
 
     const setActiveMenuItem = (item) => {
