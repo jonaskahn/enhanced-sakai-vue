@@ -50,7 +50,7 @@ export default class GlobalSettingService {
     }
 
     getTheme() {
-        return localStorage.getItem(settings.PREFER_THEME) || 'md-dark-indigo';
+        return localStorage.getItem(settings.PREFER_THEME) || 'md-light-indigo';
     }
 
     async setTheme(value) {
