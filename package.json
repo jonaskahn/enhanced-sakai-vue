@@ -5,24 +5,27 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+        "format": "prettier src --write",
+        "format:all": "prettier . --write"
     },
     "dependencies": {
-        "chart.js": "3.3.2",
+        "chart.js": "4.4.3",
         "primeflex": "^3.3.1",
-        "primeicons": "^6.0.1",
-        "primevue": "3.49.1",
-        "vue": "^3.2.41",
-        "vue-router": "^4.1.5"
+        "primeicons": "^7.0.0",
+        "primevue": "~3.53.0",
+        "vue": "^3.4.31",
+        "vue-loading-overlay": "^6.0.4",
+        "vue-router": "^4.4.0"
     },
     "devDependencies": {
-        "@rushstack/eslint-patch": "^1.1.4",
-        "@vitejs/plugin-vue": "^4.1.0",
-        "@vue/eslint-config-prettier": "^7.0.0",
-        "eslint": "^8.22.0",
-        "eslint-plugin-vue": "^9.3.0",
-        "prettier": "^2.7.1",
-        "sass": "^1.55.0",
-        "vite": "^4.2.1"
+        "@rushstack/eslint-patch": "^1.10.3",
+        "@vitejs/plugin-vue": "^5.0.5",
+        "@vue/eslint-config-prettier": "^9.0.0",
+        "eslint": "~8.57.0",
+        "eslint-plugin-vue": "^9.27.0",
+        "prettier": "^3.3.3",
+        "sass": "^1.77.8",
+        "vite": "^5.3.3"
     }
 }

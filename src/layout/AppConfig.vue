@@ -1,7 +1,9 @@
-<script setup>
-import { ref, computed } from 'vue';
+<script setup lang="js">
+import { ref, computed, onBeforeMount, inject } from 'vue';
 import { usePrimeVue } from 'primevue/config';
 import { useLayout } from '@/layout/composables/layout';
+import GlobalSettingService from '@/service/GlobalSettingService';
+import settings from '@/constants/settings';
 
 defineProps({
     simple: {
@@ -10,10 +12,17 @@ defineProps({
     }
 });
 
+const globalSettingService = new GlobalSettingService()
+
+onBeforeMount(() => {
+    $primevue.config.inputStyle = globalSettingService.getInputStyle()
+    onFocusRingColorChange(globalSettingService.useFocusRing())
+})
+
 const $primevue = usePrimeVue();
 const inputStyle = computed(() => $primevue.config.inputStyle || 'outlined');
 
-const scales = ref([12, 13, 14, 15, 16]);
+const scales = ref([12, 14, 16, 18, 20]);
 const visible = ref(false);
 const inputStyles = ref([
     { label: 'Outlined', value: 'outlined' },
@@ -23,44 +32,53 @@ const menuModes = ref([
     { label: 'Static', value: 'static' },
     { label: 'Overlay', value: 'overlay' }
 ]);
-const compactMaterial = ref(false);
-const primaryFocusRing = ref(true);
 
 const { setScale, layoutConfig } = useLayout();
 
 const onConfigButtonClick = () => {
     visible.value = !visible.value;
 };
+
+const $loading =  inject('$loading')
+
 const onChangeTheme = (theme, mode) => {
+    const loader = $loading.show(settings.LOADING_PROPERTIES);
     $primevue.changeTheme(layoutConfig.theme.value, theme, 'theme-css', () => {
         layoutConfig.theme.value = theme;
         layoutConfig.darkTheme.value = mode;
+        globalSettingService.setTheme(theme);
+        globalSettingService.setDarkMode(mode)
+        setTimeout( () => loader.hide(), 150)
     });
 };
 const decrementScale = () => {
-    setScale(layoutConfig.scale.value - 1);
+    setScale(layoutConfig.scale.value - 2);
     applyScale();
 };
 const incrementScale = () => {
-    setScale(layoutConfig.scale.value + 1);
+    setScale(layoutConfig.scale.value + 2);
     applyScale();
 };
 const applyScale = () => {
     document.documentElement.style.fontSize = layoutConfig.scale.value + 'px';
 };
 const onInputStyleChange = (value) => {
+    globalSettingService.setInputStyle(value)
     $primevue.config.inputStyle = value;
 };
 const onMenuModeChange = (value) => {
+    globalSettingService.setMenuMode(value)
     layoutConfig.menuMode.value = value;
 };
 const onRippleChange = (value) => {
+    globalSettingService.setRippleMode(value)
     layoutConfig.ripple.value = value;
 };
 const onDarkModeChange = (value) => {
     const newThemeName = value ? layoutConfig.theme.value.replace('light', 'dark') : layoutConfig.theme.value.replace('dark', 'light');
-
     layoutConfig.darkTheme.value = value;
+    console.log(newThemeName)
+    console.log(value)
     onChangeTheme(newThemeName, value);
 };
 const changeTheme = (theme, color) => {
@@ -72,7 +90,7 @@ const changeTheme = (theme, color) => {
         newTheme += '-' + color;
     }
 
-    if (newTheme.startsWith('md-') && compactMaterial.value) {
+    if (newTheme.startsWith('md-') && layoutConfig.compactMaterial.value) {
         newTheme = newTheme.replace('md-', 'mdc-');
     }
 
@@ -82,7 +100,7 @@ const changeTheme = (theme, color) => {
 };
 const isThemeActive = (themeFamily, color) => {
     let themeName;
-    let themePrefix = themeFamily === 'md' && compactMaterial.value ? 'mdc' : themeFamily;
+    let themePrefix = themeFamily === 'md' && layoutConfig.compactMaterial.value ? 'mdc' : themeFamily;
 
     themeName = themePrefix + (layoutConfig.darkTheme.value ? '-dark' : '-light');
 
@@ -93,8 +111,8 @@ const isThemeActive = (themeFamily, color) => {
     return layoutConfig.theme.value === themeName;
 };
 const onCompactMaterialChange = (value) => {
-    compactMaterial.value = value;
-
+    layoutConfig.compactMaterial.value = value;
+    globalSettingService.setCompactMaterial(value)
     if (layoutConfig.theme.value.startsWith('md')) {
         let tokens = layoutConfig.theme.value.split('-');
 
@@ -102,7 +120,8 @@ const onCompactMaterialChange = (value) => {
     }
 };
 const onFocusRingColorChange = (value) => {
-    primaryFocusRing.value = value;
+    layoutConfig.focusRing.value = value;
+    globalSettingService.setFocusRing(value);
     let root = document.documentElement;
 
     if (value) {
@@ -271,7 +290,7 @@ const onFocusRingColorChange = (value) => {
 
                 <section class="pt-4 flex align-items-center justify-content-between">
                     <span class="text-sm">Primary Focus Ring</span>
-                    <InputSwitch :modelValue="primaryFocusRing" @update:modelValue="onFocusRingColorChange" />
+                    <InputSwitch :modelValue="layoutConfig.focusRing.value" @update:modelValue="onFocusRingColorChange" />
                 </section>
             </section>
 
@@ -372,7 +391,7 @@ const onFocusRingColorChange = (value) => {
                     <span class="font-medium">Material Design</span>
                     <div class="ml-auto flex align-items-center gap-2">
                         <label for="material-condensed" class="text-sm">Condensed</label>
-                        <InputSwitch inputId="material-condensed" :modelValue="compactMaterial" @update:modelValue="onCompactMaterialChange" class="ml-auto" />
+                        <InputSwitch inputId="material-condensed" :modelValue="layoutConfig.compactMaterial.value" @update:modelValue="onCompactMaterialChange" class="ml-auto" />
                     </div>
                 </div>
                 <div class="flex align-items-center justify-content-between gap-3">

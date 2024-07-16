@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-$gutter: 1rem; //for primeflex grid system
+$gutter: 1.5rem; //for primeflex grid system
 @import '@/assets/layout/layout.scss';
 
 /* PrimeVue */
@@ -10,3 +10,5 @@ $gutter: 1rem; //for primeflex grid system
 
 /* Demos */
 @import '@/assets/demo/demo.scss';
+@import '@/assets/global/scrollbar.scss';
+@import '@/assets/global/transition.scss';

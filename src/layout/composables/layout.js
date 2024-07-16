@@ -1,12 +1,17 @@
 import { toRefs, reactive, computed } from 'vue';
+import GlobalSettingService from '@/service/GlobalSettingService';
+
+const globalSettingService = new GlobalSettingService();
 
 const layoutConfig = reactive({
-    ripple: true,
-    darkTheme: false,
-    inputStyle: 'outlined',
-    menuMode: 'static',
-    theme: 'aura-light-green',
-    scale: 14,
+    ripple: globalSettingService.useRippleMode(),
+    darkTheme: globalSettingService.useDarkMode(),
+    inputStyle: globalSettingService.getInputStyle(),
+    menuMode: globalSettingService.getMenuMode(),
+    theme: globalSettingService.getTheme(),
+    scale: globalSettingService.getScaleFactor(),
+    focusRing: globalSettingService.useFocusRing(),
+    compactMaterial: globalSettingService.useCompactMaterial(),
     activeMenuItem: null
 });
 
@@ -22,6 +27,8 @@ const layoutState = reactive({
 export function useLayout() {
     const setScale = (scale) => {
         layoutConfig.scale = scale;
+        globalSettingService.setScaleFactor(scale)
+
     };
 
     const setActiveMenuItem = (item) => {

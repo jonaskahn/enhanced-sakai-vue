@@ -5,6 +5,7 @@ import AppFooter from './AppFooter.vue';
 import AppSidebar from './AppSidebar.vue';
 import AppConfig from './AppConfig.vue';
 import { useLayout } from '@/layout/composables/layout';
+import { useRoute } from 'vue-router';
 
 const { layoutConfig, layoutState, isSidebarActive } = useLayout();
 
@@ -54,24 +55,35 @@ const isOutsideClicked = (event) => {
 
     return !(sidebarEl.isSameNode(event.target) || sidebarEl.contains(event.target) || topbarEl.isSameNode(event.target) || topbarEl.contains(event.target));
 };
+
+const route = useRoute();
+const key = computed(() => {
+    return route.path;
+});
 </script>
 
 <template>
     <div class="layout-wrapper" :class="containerClass">
+        <Toast />
         <app-topbar></app-topbar>
         <div class="layout-sidebar">
             <app-sidebar></app-sidebar>
         </div>
         <div class="layout-main-container">
             <div class="layout-main">
-                <router-view></router-view>
+                <router-view v-slot="{ Component }">
+                    <transition mode="out-in" name="fade-transform">
+                        <div :key="key">
+                            <component :is="Component"></component>
+                        </div>
+                    </transition>
+                </router-view>
             </div>
             <app-footer></app-footer>
         </div>
         <app-config></app-config>
         <div class="layout-mask"></div>
     </div>
-    <Toast />
 </template>
 
 <style lang="scss" scoped></style>
