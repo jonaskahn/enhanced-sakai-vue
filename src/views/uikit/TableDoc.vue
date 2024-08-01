@@ -184,9 +184,7 @@ const calculateCustomerTotal = (name) => {
             <Column filterField="country.name" header="Country" style="min-width: 12rem">
                 <template #body="{ data }">
                     <div class="flex items-center gap-2">
-                        <img :class="`flag flag-${data.country.code}`" alt="flag"
-                             src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png"
-                             style="width: 24px" />
+                        <img :class="`flag flag-${data.country.code}`" alt="flag" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png" style="width: 24px" />
                         <span>{{ data.country.name }}</span>
                     </div>
                 </template>
@@ -200,24 +198,18 @@ const calculateCustomerTotal = (name) => {
                     <Button icon="pi pi-check" severity="success" type="button" @click="filterCallback()"></Button>
                 </template>
             </Column>
-            <Column :filterMenuStyle="{ width: '14rem' }" :showFilterMatchModes="false" filterField="representative"
-                    header="Agent" style="min-width: 14rem">
+            <Column :filterMenuStyle="{ width: '14rem' }" :showFilterMatchModes="false" filterField="representative" header="Agent" style="min-width: 14rem">
                 <template #body="{ data }">
                     <div class="flex items-center gap-2">
-                        <img :alt="data.representative.name"
-                             :src="`https://primefaces.org/cdn/primevue/images/avatar/${data.representative.image}`"
-                             style="width: 32px" />
+                        <img :alt="data.representative.name" :src="`https://primefaces.org/cdn/primevue/images/avatar/${data.representative.image}`" style="width: 32px" />
                         <span>{{ data.representative.name }}</span>
                     </div>
                 </template>
                 <template #filter="{ filterModel }">
-                    <MultiSelect v-model="filterModel.value" :options="representatives" optionLabel="name"
-                                 placeholder="Any">
+                    <MultiSelect v-model="filterModel.value" :options="representatives" optionLabel="name" placeholder="Any">
                         <template #option="slotProps">
                             <div class="flex items-center gap-2">
-                                <img :alt="slotProps.option.name"
-                                     :src="`https://primefaces.org/cdn/primevue/images/avatar/${slotProps.option.image}`"
-                                     style="width: 32px" />
+                                <img :alt="slotProps.option.name" :src="`https://primefaces.org/cdn/primevue/images/avatar/${slotProps.option.image}`" style="width: 32px" />
                                 <span>{{ slotProps.option.name }}</span>
                             </div>
                         </template>
@@ -264,16 +256,13 @@ const calculateCustomerTotal = (name) => {
                     </div>
                 </template>
             </Column>
-            <Column bodyClass="text-center" dataType="boolean" field="verified" header="Verified"
-                    style="min-width: 8rem">
+            <Column bodyClass="text-center" dataType="boolean" field="verified" header="Verified" style="min-width: 8rem">
                 <template #body="{ data }">
-                    <i :class="{ 'pi-check-circle text-green-500 ': data.verified, 'pi-times-circle text-red-500': !data.verified }"
-                       class="pi"></i>
+                    <i :class="{ 'pi-check-circle text-green-500 ': data.verified, 'pi-times-circle text-red-500': !data.verified }" class="pi"></i>
                 </template>
                 <template #filter="{ filterModel }">
                     <label class="font-bold" for="verified-filter"> Verified </label>
-                    <Checkbox v-model="filterModel.value" :indeterminate="filterModel.value === null" binary
-                              inputId="verified-filter" />
+                    <Checkbox v-model="filterModel.value" :indeterminate="filterModel.value === null" binary inputId="verified-filter" />
                 </template>
             </Column>
         </DataTable>
@@ -281,8 +270,7 @@ const calculateCustomerTotal = (name) => {
 
     <div class="card">
         <div class="font-semibold text-xl mb-4">Frozen Columns</div>
-        <ToggleButton v-model="balanceFrozen" offIcon="pi pi-lock-open" offLabel="Balance" onIcon="pi pi-lock"
-                      onLabel="Balance" />
+        <ToggleButton v-model="balanceFrozen" offIcon="pi pi-lock-open" offLabel="Balance" onIcon="pi pi-lock" onLabel="Balance" />
 
         <DataTable :value="customers2" class="mt-6" scrollHeight="400px" scrollable>
             <Column class="font-bold" field="name" frozen header="Name" style="min-width: 200px"></Column>
@@ -294,8 +282,7 @@ const calculateCustomerTotal = (name) => {
             <Column field="status" header="Status" style="min-width: 200px"></Column>
             <Column field="activity" header="Activity" style="min-width: 200px"></Column>
             <Column field="representative.name" header="Representative" style="min-width: 200px"></Column>
-            <Column :frozen="balanceFrozen" alignFrozen="right" field="balance" header="Balance"
-                    style="min-width: 200px">
+            <Column :frozen="balanceFrozen" alignFrozen="right" field="balance" header="Balance" style="min-width: 200px">
                 <template #body="{ data }">
                     <span class="font-bold">{{ formatCurrency(data.balance) }}</span>
                 </template>
@@ -316,9 +303,7 @@ const calculateCustomerTotal = (name) => {
             <Column field="name" header="Name"></Column>
             <Column header="Image">
                 <template #body="slotProps">
-                    <img :alt="slotProps.data.image"
-                         :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`"
-                         class="shadow-lg" width="64" />
+                    <img :alt="slotProps.data.image" :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" class="shadow-lg" width="64" />
                 </template>
             </Column>
             <Column field="price" header="Price">
@@ -351,8 +336,7 @@ const calculateCustomerTotal = (name) => {
                         </Column>
                         <Column field="status" header="Status" sortable>
                             <template #body="slotProps">
-                                <Tag :severity="getOrderSeverity(slotProps.data)"
-                                     :value="slotProps.data.status.toLowerCase()" />
+                                <Tag :severity="getOrderSeverity(slotProps.data)" :value="slotProps.data.status.toLowerCase()" />
                             </template>
                         </Column>
                         <Column headerStyle="width:4rem">
@@ -368,14 +352,10 @@ const calculateCustomerTotal = (name) => {
 
     <div class="card">
         <div class="font-semibold text-xl mb-4">Grouping</div>
-        <DataTable :sortOrder="1" :value="customers3" groupRowsBy="representative.name" rowGroupMode="subheader"
-                   scrollHeight="400px" scrollable sortField="representative.name" sortMode="single"
-                   tableStyle="min-width: 50rem">
+        <DataTable :sortOrder="1" :value="customers3" groupRowsBy="representative.name" rowGroupMode="subheader" scrollHeight="400px" scrollable sortField="representative.name" sortMode="single" tableStyle="min-width: 50rem">
             <template #groupheader="slotProps">
                 <div class="flex items-center gap-2">
-                    <img :alt="slotProps.data.representative.name"
-                         :src="`https://primefaces.org/cdn/primevue/images/avatar/${slotProps.data.representative.image}`"
-                         style="vertical-align: middle" width="32" />
+                    <img :alt="slotProps.data.representative.name" :src="`https://primefaces.org/cdn/primevue/images/avatar/${slotProps.data.representative.image}`" style="vertical-align: middle" width="32" />
                     <span>{{ slotProps.data.representative.name }}</span>
                 </div>
             </template>
@@ -384,9 +364,7 @@ const calculateCustomerTotal = (name) => {
             <Column field="country" header="Country" style="min-width: 200px">
                 <template #body="slotProps">
                     <div class="flex items-center gap-2">
-                        <img :class="`flag flag-${slotProps.data.country.code}`" alt="flag"
-                             src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png"
-                             style="width: 24px" />
+                        <img :class="`flag flag-${slotProps.data.country.code}`" alt="flag" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png" style="width: 24px" />
                         <span>{{ slotProps.data.country.name }}</span>
                     </div>
                 </template>
@@ -399,7 +377,8 @@ const calculateCustomerTotal = (name) => {
             </Column>
             <Column field="date" header="Date" style="min-width: 200px"></Column>
             <template #groupfooter="slotProps">
-                <div class="flex justify-end font-bold w-full">Total Customers:
+                <div class="flex justify-end font-bold w-full">
+                    Total Customers:
                     {{ calculateCustomerTotal(slotProps.data.representative.name) }}
                 </div>
             </template>

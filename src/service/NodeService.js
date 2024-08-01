@@ -27,12 +27,14 @@ export const NodeService = {
                         label: 'Home',
                         data: 'Home Folder',
                         icon: 'pi pi-fw pi-home',
-                        children: [{
-                            key: '0-1-0',
-                            label: 'Invoices.txt',
-                            icon: 'pi pi-fw pi-file',
-                            data: 'Invoices for this month'
-                        }]
+                        children: [
+                            {
+                                key: '0-1-0',
+                                label: 'Invoices.txt',
+                                icon: 'pi pi-fw pi-file',
+                                data: 'Invoices for this month'
+                            }
+                        ]
                     }
                 ]
             },

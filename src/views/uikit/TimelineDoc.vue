@@ -82,8 +82,7 @@ const horizontalEvents = ref(['2020', '2021', '2022', '2023']);
                 <div class="font-semibold text-xl mb-4">Templating</div>
                 <Timeline :value="events" align="alternate" class="customized-timeline">
                     <template #marker="slotProps">
-                        <span :style="{ backgroundColor: slotProps.item.color }"
-                              class="flex w-8 h-8 items-center justify-center text-white rounded-full z-10 shadow-sm">
+                        <span :style="{ backgroundColor: slotProps.item.color }" class="flex w-8 h-8 items-center justify-center text-white rounded-full z-10 shadow-sm">
                             <i :class="slotProps.item.icon"></i>
                         </span>
                     </template>
@@ -96,14 +95,9 @@ const horizontalEvents = ref(['2020', '2021', '2022', '2023']);
                                 {{ slotProps.item.date }}
                             </template>
                             <template #content>
-                                <img v-if="slotProps.item.image"
-                                     :alt="slotProps.item.name"
-                                     :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.item.image}`"
-                                     class="shadow-sm" width="200" />
+                                <img v-if="slotProps.item.image" :alt="slotProps.item.name" :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.item.image}`" class="shadow-sm" width="200" />
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur
-                                    error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam
-                                    nobis, culpa ratione quam perferendis esse,
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse,
                                     cupiditate neque quas!
                                 </p>
                                 <Button label="Read more" text></Button>

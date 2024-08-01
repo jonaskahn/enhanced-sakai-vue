@@ -13,6 +13,7 @@
         "@primeuix/styled": "^0.0.5",
         "@primevue/themes": "^4.0.3",
         "chart.js": "4.4.3",
+        "flag-icons": "^7.2.3",
         "primeicons": "^7.0.0",
         "primevue": "^4.0.3",
         "vue": "^3.4.34",

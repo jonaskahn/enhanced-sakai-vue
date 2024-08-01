@@ -68,8 +68,7 @@ onBeforeUnmount(() => {
                 <div class="font-semibold my-4">Button</div>
                 <div class="flex gap-2">
                     <Button badge="8" class="mr-2" label="Emails"></Button>
-                    <Button badge="8" badgeClass="p-badge-danger" icon="pi pi-users" label="Messages"
-                            severity="warn"></Button>
+                    <Button badge="8" badgeClass="p-badge-danger" icon="pi pi-users" label="Messages" severity="warn"></Button>
                 </div>
 
                 <div class="font-semibold my-4">Sizes</div>
@@ -89,17 +88,13 @@ onBeforeUnmount(() => {
                     <Avatar :image="'/demo/images/avatar/onyamalimba.png'" shape="circle" size="large"></Avatar>
                     <Avatar :image="'/demo/images/avatar/ionibowcher.png'" shape="circle" size="large"></Avatar>
                     <Avatar :image="'/demo/images/avatar/xuxuefeng.png'" shape="circle" size="large"></Avatar>
-                    <Avatar :style="{ 'background-color': '#9c27b0', color: '#ffffff' }" label="+2" shape="circle"
-                            size="large"></Avatar>
+                    <Avatar :style="{ 'background-color': '#9c27b0', color: '#ffffff' }" label="+2" shape="circle" size="large"></Avatar>
                 </AvatarGroup>
 
                 <div class="font-semibold my-4">Label - Circle</div>
                 <Avatar class="mr-2" label="P" shape="circle" size="xlarge"></Avatar>
-                <Avatar :style="{ 'background-color': '#2196F3', color: '#ffffff' }" class="mr-2" label="V"
-                        shape="circle"
-                        size="large"></Avatar>
-                <Avatar :style="{ 'background-color': '#9c27b0', color: '#ffffff' }" class="mr-2" label="U"
-                        shape="circle"></Avatar>
+                <Avatar :style="{ 'background-color': '#2196F3', color: '#ffffff' }" class="mr-2" label="V" shape="circle" size="large"></Avatar>
+                <Avatar :style="{ 'background-color': '#9c27b0', color: '#ffffff' }" class="mr-2" label="U" shape="circle"></Avatar>
 
                 <div class="font-semibold my-4">Icon - Badge</div>
                 <OverlayBadge class="inline-flex" severity="danger" value="4">
@@ -111,20 +106,11 @@ onBeforeUnmount(() => {
                 <div class="font-semibold text-xl mb-4">ScrollTop</div>
                 <ScrollPanel :style="{ width: '250px', height: '200px' }">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Vitae et leo duis ut diam. Ultricies mi quis hendrerit dolor
-                        magna eget est lorem. Amet consectetur
-                        adipiscing elit ut. Nam libero justo laoreet sit amet. Pharetra massa massa ultricies mi quis
-                        hendrerit dolor magna. Est ultricies integer quis auctor elit sed vulputate. Consequat ac felis
-                        donec et. Tellus orci ac auctor
-                        augue mauris. Semper feugiat nibh sed pulvinar proin gravida hendrerit lectus a. Tincidunt arcu
-                        non sodales neque sodales. Metus aliquam eleifend mi in nulla posuere sollicitudin aliquam
-                        ultrices. Sodales ut etiam sit amet
-                        nisl purus. Cursus sit amet dictum sit amet. Tristique senectus et netus et malesuada fames ac
-                        turpis egestas. Et tortor consequat id porta nibh venenatis cras sed. Diam maecenas ultricies mi
-                        eget mauris. Eget egestas purus
-                        viverra accumsan in nisl nisi. Suscipit adipiscing bibendum est ultricies integer. Mattis
-                        aliquam faucibus purus in massa tempor nec.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae et leo duis ut diam. Ultricies mi quis hendrerit dolor magna eget est lorem. Amet consectetur
+                        adipiscing elit ut. Nam libero justo laoreet sit amet. Pharetra massa massa ultricies mi quis hendrerit dolor magna. Est ultricies integer quis auctor elit sed vulputate. Consequat ac felis donec et. Tellus orci ac auctor
+                        augue mauris. Semper feugiat nibh sed pulvinar proin gravida hendrerit lectus a. Tincidunt arcu non sodales neque sodales. Metus aliquam eleifend mi in nulla posuere sollicitudin aliquam ultrices. Sodales ut etiam sit amet
+                        nisl purus. Cursus sit amet dictum sit amet. Tristique senectus et netus et malesuada fames ac turpis egestas. Et tortor consequat id porta nibh venenatis cras sed. Diam maecenas ultricies mi eget mauris. Eget egestas purus
+                        viverra accumsan in nisl nisi. Suscipit adipiscing bibendum est ultricies integer. Mattis aliquam faucibus purus in massa tempor nec.
                     </p>
                     <ScrollTop :threshold="100" icon="pi pi-arrow-up" target="parent"></ScrollTop>
                 </ScrollPanel>
@@ -182,8 +168,7 @@ onBeforeUnmount(() => {
                 <div class="font-semibold my-4">Image</div>
                 <div class="flex items-center flex-col sm:flex-row">
                     <Chip :image="'/demo/images/avatar/amyelsner.png'" class="mr-2 mb-2" label="Amy Elsner"></Chip>
-                    <Chip :image="'/demo/images/avatar/asiyajavayant.png'" class="mr-2 mb-2"
-                          label="Asiya Javayant"></Chip>
+                    <Chip :image="'/demo/images/avatar/asiyajavayant.png'" class="mr-2 mb-2" label="Asiya Javayant"></Chip>
                     <Chip :image="'/demo/images/avatar/onyamalimba.png'" class="mr-2 mb-2" label="Onyama Limba"></Chip>
                 </div>
             </div>

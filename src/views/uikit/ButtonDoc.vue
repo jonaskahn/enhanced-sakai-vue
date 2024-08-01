@@ -187,12 +187,9 @@ const load = (index) => {
             <div class="card flex flex-col gap-4">
                 <div class="font-semibold text-xl">Loading</div>
                 <div class="flex flex-wrap gap-2">
-                    <Button :loading="loading[0]" class="mr-2 mb-2" icon="pi pi-search" label="Search" type="button"
-                            @click="load(0)" />
-                    <Button :loading="loading[1]" class="mr-2 mb-2" icon="pi pi-search" iconPos="right" label="Search"
-                            type="button" @click="load(1)" />
-                    <Button :loading="loading[2]" class="mr-2 mb-2" icon="pi pi-search" type="button"
-                            @click="load(2)" />
+                    <Button :loading="loading[0]" class="mr-2 mb-2" icon="pi pi-search" label="Search" type="button" @click="load(0)" />
+                    <Button :loading="loading[1]" class="mr-2 mb-2" icon="pi pi-search" iconPos="right" label="Search" type="button" @click="load(1)" />
+                    <Button :loading="loading[2]" class="mr-2 mb-2" icon="pi pi-search" type="button" @click="load(2)" />
                     <Button :loading="loading[3]" class="mr-2 mb-2" label="Search" type="button" @click="load(3)" />
                 </div>
             </div>

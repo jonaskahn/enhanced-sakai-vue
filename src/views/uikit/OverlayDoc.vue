@@ -81,15 +81,10 @@ const confirm = (event) => {
         <div class="md:w-1/2">
             <div class="card">
                 <div class="font-semibold text-xl mb-4">Dialog</div>
-                <Dialog v-model:visible="display" :breakpoints="{ '960px': '75vw' }" :modal="true"
-                        :style="{ width: '30vw' }" header="Dialog">
+                <Dialog v-model:visible="display" :breakpoints="{ '960px': '75vw' }" :modal="true" :style="{ width: '30vw' }" header="Dialog">
                     <p class="leading-normal m-0">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                        deserunt mollit anim id est laborum.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
                     <template #footer>
                         <Button label="Save" @click="close" />
@@ -103,15 +98,11 @@ const confirm = (event) => {
                 <div class="flex flex-wrap gap-2">
                     <Button label="Show" type="button" @click="toggleDataTable" />
                     <Popover id="overlay_panel" ref="op2" style="width: 450px">
-                        <DataTable v-model:selection="selectedProduct" :paginator="true" :rows="5"
-                                   :value="products" selectionMode="single" @row-select="onProductSelect">
+                        <DataTable v-model:selection="selectedProduct" :paginator="true" :rows="5" :value="products" selectionMode="single" @row-select="onProductSelect">
                             <Column field="name" header="Name" sortable style="min-width: 12rem"></Column>
                             <Column header="Image">
                                 <template #body="slotProps">
-                                    <img
-                                        :alt="slotProps.data.image"
-                                        :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`"
-                                        class="w-16 shadow-sm" />
+                                    <img :alt="slotProps.data.image" :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" class="w-16 shadow-sm" />
                                 </template>
                             </Column>
                             <Column field="price" header="Price" sortable style="min-width: 8rem">
@@ -135,45 +126,35 @@ const confirm = (event) => {
                 <div class="font-semibold text-xl mb-4">Drawer</div>
                 <Drawer v-model:visible="visibleLeft" header="Drawer">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                         consequat.
                     </p>
                 </Drawer>
 
                 <Drawer v-model:visible="visibleRight" header="Drawer" position="right">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                         consequat.
                     </p>
                 </Drawer>
 
                 <Drawer v-model:visible="visibleTop" header="Drawer" position="top">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                         consequat.
                     </p>
                 </Drawer>
 
                 <Drawer v-model:visible="visibleBottom" header="Drawer" position="bottom">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                         consequat.
                     </p>
                 </Drawer>
 
                 <Drawer v-model:visible="visibleFull" header="Drawer" position="full">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                         consequat.
                     </p>
                 </Drawer>
@@ -193,18 +174,15 @@ const confirm = (event) => {
 
             <div class="card">
                 <div class="font-semibold text-xl mb-4">ConfirmDialog</div>
-                <Button icon="pi pi-trash" label="Delete" severity="danger" style="width: auto"
-                        @click="openConfirmation" />
-                <Dialog v-model:visible="displayConfirmation" :modal="true" :style="{ width: '350px' }"
-                        header="Confirmation">
+                <Button icon="pi pi-trash" label="Delete" severity="danger" style="width: auto" @click="openConfirmation" />
+                <Dialog v-model:visible="displayConfirmation" :modal="true" :style="{ width: '350px' }" header="Confirmation">
                     <div class="flex items-center justify-center">
                         <i class="pi pi-exclamation-triangle mr-4" style="font-size: 2rem" />
                         <span>Are you sure you want to proceed?</span>
                     </div>
                     <template #footer>
                         <Button icon="pi pi-times" label="No" severity="secondary" text @click="closeConfirmation" />
-                        <Button autofocus icon="pi pi-check" label="Yes" outlined severity="danger"
-                                @click="closeConfirmation" />
+                        <Button autofocus icon="pi pi-check" label="Yes" outlined severity="danger" @click="closeConfirmation" />
                     </template>
                 </Dialog>
             </div>

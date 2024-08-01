@@ -1,8 +1,15 @@
 <script setup>
 import { useLayout } from '@/layout/composables/layout';
 import AppConfigurator from './AppConfigurator.vue';
+import { ref } from 'vue';
+import LangPalette from '@/components/LangPalette.vue';
 
 const { onMenuToggle, toggleDarkMode, isDarkTheme } = useLayout();
+
+const langPref = ref();
+const toggleLanguage = (event) => {
+    langPref.value.toggle(event);
+};
 </script>
 
 <template>
@@ -19,12 +26,8 @@ const { onMenuToggle, toggleDarkMode, isDarkTheme } = useLayout();
                         fill="var(--primary-color)"
                         fill-rule="evenodd"
                     />
-                    <mask id="mask0_1413_1551" height="11" maskUnits="userSpaceOnUse" style="mask-type: alpha"
-                          width="54"
-                          x="0" y="8">
-                        <path
-                            d="M27 18.3652C10.5114 19.1944 0 8.88892 0 8.88892C0 8.88892 16.5176 14.5866 27 14.5866C37.4824 14.5866 54 8.88892 54 8.88892C54 8.88892 43.4886 17.5361 27 18.3652Z"
-                            fill="var(--primary-color)" />
+                    <mask id="mask0_1413_1551" height="11" maskUnits="userSpaceOnUse" style="mask-type: alpha" width="54" x="0" y="8">
+                        <path d="M27 18.3652C10.5114 19.1944 0 8.88892 0 8.88892C0 8.88892 16.5176 14.5866 27 14.5866C37.4824 14.5866 54 8.88892 54 8.88892C54 8.88892 43.4886 17.5361 27 18.3652Z" fill="var(--primary-color)" />
                     </mask>
                     <g mask="url(#mask0_1413_1551)">
                         <path
@@ -40,9 +43,14 @@ const { onMenuToggle, toggleDarkMode, isDarkTheme } = useLayout();
 
         <div class="layout-topbar-actions">
             <div class="layout-config-menu">
+                <button class="layout-topbar-action" type="button" @click="toggleLanguage">
+                    <i class="pi pi-globe"></i>
+                </button>
+
                 <button class="layout-topbar-action" type="button" @click="toggleDarkMode">
                     <i :class="['pi', { 'pi-moon': isDarkTheme, 'pi-sun': !isDarkTheme }]"></i>
                 </button>
+
                 <div class="relative">
                     <button
                         v-styleclass="{ selector: '@next', enterFromClass: 'hidden', enterActiveClass: 'animate-scalein', leaveToClass: 'hidden', leaveActiveClass: 'animate-fadeout', hideOnOutsideClick: true }"
@@ -79,5 +87,8 @@ const { onMenuToggle, toggleDarkMode, isDarkTheme } = useLayout();
                 </div>
             </div>
         </div>
+        <Popover ref="langPref">
+            <lang-palette />
+        </Popover>
     </div>
 </template>

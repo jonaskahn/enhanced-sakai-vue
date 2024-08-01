@@ -28,7 +28,6 @@ const statuses = ref([
 
 const formatCurrency = (value) => {
     if (value) return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-
 };
 const openNew = () => {
     product.value = {};
@@ -129,9 +128,7 @@ const getStatusLabel = (status) => {
             <Toolbar class="mb-6">
                 <template #start>
                     <Button class="mr-2" icon="pi pi-plus" label="New" severity="secondary" @click="openNew" />
-                    <Button :disabled="!selectedProducts || !selectedProducts.length" icon="pi pi-trash" label="Delete"
-                            severity="secondary"
-                            @click="confirmDeleteSelected" />
+                    <Button :disabled="!selectedProducts || !selectedProducts.length" icon="pi pi-trash" label="Delete" severity="secondary" @click="confirmDeleteSelected" />
                 </template>
 
                 <template #end>
@@ -168,9 +165,7 @@ const getStatusLabel = (status) => {
                 <Column field="name" header="Name" sortable style="min-width: 16rem"></Column>
                 <Column header="Image">
                     <template #body="slotProps">
-                        <img :alt="slotProps.data.image"
-                             :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`"
-                             class="rounded" style="width: 64px" />
+                        <img :alt="slotProps.data.image" :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" class="rounded" style="width: 64px" />
                     </template>
                 </Column>
                 <Column field="price" header="Price" sortable style="min-width: 8rem">
@@ -186,16 +181,13 @@ const getStatusLabel = (status) => {
                 </Column>
                 <Column field="inventoryStatus" header="Status" sortable style="min-width: 12rem">
                     <template #body="slotProps">
-                        <Tag :severity="getStatusLabel(slotProps.data.inventoryStatus)"
-                             :value="slotProps.data.inventoryStatus" />
+                        <Tag :severity="getStatusLabel(slotProps.data.inventoryStatus)" :value="slotProps.data.inventoryStatus" />
                     </template>
                 </Column>
                 <Column :exportable="false" style="min-width: 12rem">
                     <template #body="slotProps">
-                        <Button class="mr-2" icon="pi pi-pencil" outlined rounded
-                                @click="editProduct(slotProps.data)" />
-                        <Button icon="pi pi-trash" outlined rounded severity="danger"
-                                @click="confirmDeleteProduct(slotProps.data)" />
+                        <Button class="mr-2" icon="pi pi-pencil" outlined rounded @click="editProduct(slotProps.data)" />
+                        <Button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteProduct(slotProps.data)" />
                     </template>
                 </Column>
             </DataTable>
@@ -203,13 +195,10 @@ const getStatusLabel = (status) => {
 
         <Dialog v-model:visible="productDialog" :modal="true" :style="{ width: '450px' }" header="Product Details">
             <div class="flex flex-col gap-6">
-                <img v-if="product.image" :alt="product.image"
-                     :src="`https://primefaces.org/cdn/primevue/images/product/${product.image}`"
-                     class="block m-auto pb-4" />
+                <img v-if="product.image" :alt="product.image" :src="`https://primefaces.org/cdn/primevue/images/product/${product.image}`" class="block m-auto pb-4" />
                 <div>
                     <label class="block font-bold mb-3" for="name">Name</label>
-                    <InputText id="name" v-model.trim="product.name" :invalid="submitted && !product.name" autofocus
-                               fluid required="true" />
+                    <InputText id="name" v-model.trim="product.name" :invalid="submitted && !product.name" autofocus fluid required="true" />
                     <small v-if="submitted && !product.name" class="text-red-500">Name is required.</small>
                 </div>
                 <div>
@@ -218,16 +207,14 @@ const getStatusLabel = (status) => {
                 </div>
                 <div>
                     <label class="block font-bold mb-3" for="inventoryStatus">Inventory Status</label>
-                    <Select id="inventoryStatus" v-model="product.inventoryStatus" :options="statuses"
-                            fluid optionLabel="label" placeholder="Select a Status"></Select>
+                    <Select id="inventoryStatus" v-model="product.inventoryStatus" :options="statuses" fluid optionLabel="label" placeholder="Select a Status"></Select>
                 </div>
 
                 <div>
                     <span class="block font-bold mb-4">Category</span>
                     <div class="grid grid-cols-12 gap-4">
                         <div class="flex items-center gap-2 col-span-6">
-                            <RadioButton id="category1" v-model="product.category" name="category"
-                                         value="Accessories" />
+                            <RadioButton id="category1" v-model="product.category" name="category" value="Accessories" />
                             <label for="category1">Accessories</label>
                         </div>
                         <div class="flex items-center gap-2 col-span-6">
@@ -235,8 +222,7 @@ const getStatusLabel = (status) => {
                             <label for="category2">Clothing</label>
                         </div>
                         <div class="flex items-center gap-2 col-span-6">
-                            <RadioButton id="category3" v-model="product.category" name="category"
-                                         value="Electronics" />
+                            <RadioButton id="category3" v-model="product.category" name="category" value="Electronics" />
                             <label for="category3">Electronics</label>
                         </div>
                         <div class="flex items-center gap-2 col-span-6">
@@ -249,8 +235,7 @@ const getStatusLabel = (status) => {
                 <div class="grid grid-cols-12 gap-4">
                     <div class="col-span-6">
                         <label class="block font-bold mb-3" for="price">Price</label>
-                        <InputNumber id="price" v-model="product.price" currency="USD" fluid locale="en-US"
-                                     mode="currency" />
+                        <InputNumber id="price" v-model="product.price" currency="USD" fluid locale="en-US" mode="currency" />
                     </div>
                     <div class="col-span-6">
                         <label class="block font-bold mb-3" for="quantity">Quantity</label>
@@ -269,8 +254,8 @@ const getStatusLabel = (status) => {
             <div class="flex items-center gap-4">
                 <i class="pi pi-exclamation-triangle !text-3xl" />
                 <span v-if="product"
-                >Are you sure you want to delete <b>{{ product.name }}</b
-                >?</span
+                    >Are you sure you want to delete <b>{{ product.name }}</b
+                    >?</span
                 >
             </div>
             <template #footer>

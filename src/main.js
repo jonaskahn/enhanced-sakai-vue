@@ -10,6 +10,8 @@ import { LoadingPlugin } from 'vue-loading-overlay';
 import '@/assets/styles.scss';
 import '@/assets/tailwind.css';
 import 'vue-loading-overlay/dist/css/index.css';
+import 'flag-icons/css/flag-icons.min.css';
+
 import Lara from '@primevue/themes/lara';
 
 const app = createApp(App);

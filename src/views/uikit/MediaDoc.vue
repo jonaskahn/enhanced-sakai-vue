@@ -71,12 +71,9 @@ const getSeverity = (status) => {
                 <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-4">
                     <div class="mb-4">
                         <div class="relative mx-auto">
-                            <img :alt="slotProps.data.name"
-                                 :src="'https://primefaces.org/cdn/primevue/images/product/' + slotProps.data.image"
-                                 class="w-full rounded" />
+                            <img :alt="slotProps.data.name" :src="'https://primefaces.org/cdn/primevue/images/product/' + slotProps.data.image" class="w-full rounded" />
                             <div class="dark:bg-surface-900 absolute rounded-border" style="left: 5px; top: 5px">
-                                <Tag :severity="getSeverity(slotProps.data.inventoryStatus)"
-                                     :value="slotProps.data.inventoryStatus" />
+                                <Tag :severity="getSeverity(slotProps.data.inventoryStatus)" :value="slotProps.data.inventoryStatus" />
                             </div>
                         </div>
                     </div>
@@ -100,8 +97,7 @@ const getSeverity = (status) => {
 
     <div class="card">
         <div class="font-semibold text-xl mb-4">Galleria</div>
-        <Galleria :numVisible="5" :responsiveOptions="galleriaResponsiveOptions" :value="images"
-                  containerStyle="max-width: 640px">
+        <Galleria :numVisible="5" :responsiveOptions="galleriaResponsiveOptions" :value="images" containerStyle="max-width: 640px">
             <template #item="slotProps">
                 <img :alt="slotProps.item.alt" :src="slotProps.item.itemImageSrc" style="width: 100%" />
             </template>
