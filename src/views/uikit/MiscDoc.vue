@@ -95,7 +95,8 @@ onBeforeUnmount(() => {
 
                 <div class="font-semibold my-4">Label - Circle</div>
                 <Avatar class="mr-2" label="P" shape="circle" size="xlarge"></Avatar>
-                <Avatar :style="{ 'background-color': '#2196F3', color: '#ffffff' }" class="mr-2" label="V" shape="circle"
+                <Avatar :style="{ 'background-color': '#2196F3', color: '#ffffff' }" class="mr-2" label="V"
+                        shape="circle"
                         size="large"></Avatar>
                 <Avatar :style="{ 'background-color': '#9c27b0', color: '#ffffff' }" class="mr-2" label="U"
                         shape="circle"></Avatar>

@@ -2,25 +2,29 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 
-import Aura from '@primevue/themes/aura';
 import PrimeVue from 'primevue/config';
 import ConfirmationService from 'primevue/confirmationservice';
 import ToastService from 'primevue/toastservice';
+import { LoadingPlugin } from 'vue-loading-overlay';
 
 import '@/assets/styles.scss';
 import '@/assets/tailwind.css';
+import 'vue-loading-overlay/dist/css/index.css';
+import Lara from '@primevue/themes/lara';
 
 const app = createApp(App);
 
-app.use(router);
 app.use(PrimeVue, {
     theme: {
-        preset: Aura,
+        preset: Lara,
         options: {
             darkModeSelector: '.app-dark'
         }
     }
 });
+
+app.use(LoadingPlugin);
+app.use(router);
 app.use(ToastService);
 app.use(ConfirmationService);
 

@@ -19,7 +19,8 @@ const smoothScroll = (id) => {
                             fill="var(--primary-color)"
                             fill-rule="evenodd"
                         />
-                        <mask id="mask0_1413_1551" height="11" maskUnits="userSpaceOnUse" style="mask-type: alpha" width="54"
+                        <mask id="mask0_1413_1551" height="11" maskUnits="userSpaceOnUse" style="mask-type: alpha"
+                              width="54"
                               x="0" y="8">
                             <path
                                 d="M27 18.3652C10.5114 19.1944 0 8.88892 0 8.88892C0 8.88892 16.5176 14.5866 27 14.5866C37.4824 14.5866 54 8.88892 54 8.88892C54 8.88892 43.4886 17.5361 27 18.3652Z"
@@ -346,8 +347,9 @@ const smoothScroll = (id) => {
                                     <span class="text-5xl font-bold mr-2 text-surface-900 dark:text-surface-0">$0</span>
                                     <span class="text-surface-600 dark:text-surface-200">per month</span>
                                 </div>
-                                <Button class="p-button-rounded border-0 ml-4 font-light leading-tight bg-blue-500 text-white"
-                                        label="Get Started"></Button>
+                                <Button
+                                    class="p-button-rounded border-0 ml-4 font-light leading-tight bg-blue-500 text-white"
+                                    label="Get Started"></Button>
                             </div>
                             <Divider class="w-full bg-surface-200"></Divider>
                             <ul class="my-8 list-none p-0 flex text-surface-900 dark:text-surface-0 flex-col px-8">
@@ -382,8 +384,9 @@ const smoothScroll = (id) => {
                                     <span class="text-5xl font-bold mr-2 text-surface-900 dark:text-surface-0">$1</span>
                                     <span class="text-surface-600 dark:text-surface-200">per month</span>
                                 </div>
-                                <Button class="p-button-rounded border-0 ml-4 font-light leading-tight bg-blue-500 text-white"
-                                        label="Get Started"></Button>
+                                <Button
+                                    class="p-button-rounded border-0 ml-4 font-light leading-tight bg-blue-500 text-white"
+                                    label="Get Started"></Button>
                             </div>
                             <Divider class="w-full bg-surface-200"></Divider>
                             <ul class="my-8 list-none p-0 flex text-surface-900 dark:text-surface-0 flex-col px-8">
@@ -418,8 +421,9 @@ const smoothScroll = (id) => {
                                     <span class="text-5xl font-bold mr-2 text-surface-900 dark:text-surface-0">$5</span>
                                     <span class="text-surface-600 dark:text-surface-200">per month</span>
                                 </div>
-                                <Button class="p-button-rounded border-0 ml-4 font-light leading-tight bg-blue-500 text-white"
-                                        label="Get Started"></Button>
+                                <Button
+                                    class="p-button-rounded border-0 ml-4 font-light leading-tight bg-blue-500 text-white"
+                                    label="Get Started"></Button>
                             </div>
                             <Divider class="w-full bg-surface-200"></Divider>
                             <ul class="my-8 list-none p-0 flex text-surface-900 dark:text-surface-0 flex-col px-8">
@@ -457,7 +461,8 @@ const smoothScroll = (id) => {
                                     fill="var(--primary-color)"
                                     fill-rule="evenodd"
                                 />
-                                <mask id="mask0_1413_1551" height="11" maskUnits="userSpaceOnUse" style="mask-type: alpha"
+                                <mask id="mask0_1413_1551" height="11" maskUnits="userSpaceOnUse"
+                                      style="mask-type: alpha"
                                       width="54" x="0" y="8">
                                     <path
                                         d="M27 18.3652C10.5114 19.1944 0 8.88892 0 8.88892C0 8.88892 16.5176 14.5866 27 14.5866C37.4824 14.5866 54 8.88892 54 8.88892C54 8.88892 43.4886 17.5361 27 18.3652Z"

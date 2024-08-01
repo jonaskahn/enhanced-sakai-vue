@@ -1,4 +1,31 @@
-<script setup></script>
+<script setup>
+import { onMounted } from 'vue';
+import { SettingService } from '@/service/SettingService';
+import { useThemeSetting } from '@/layout/composables/theme';
+import { updatePreset, updateSurfacePalette } from '@primevue/themes';
+import { useLayout } from '@/layout/composables/layout';
+
+const settingService = SettingService.INSTANCE;
+const { primaryColors, surfaces, getPresetExtColor } = useThemeSetting();
+const { switchOnDarkMode } = useLayout();
+
+const initialPreset = () => {
+    const primaryColor = primaryColors.value.find((c) => c.name === settingService.getPrimaryTheme());
+    const presetColor = getPresetExtColor(primaryColor);
+    updatePreset(presetColor);
+};
+
+const initialSurface = () => {
+    const surfacePalette = surfaces.value.find((s) => s.name === settingService.getSurfaceTheme())?.palette;
+    updateSurfacePalette(surfacePalette);
+};
+
+onMounted(() => {
+    initialPreset();
+    initialSurface();
+    switchOnDarkMode();
+});
+</script>
 
 <template>
     <router-view />

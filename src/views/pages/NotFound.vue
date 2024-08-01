@@ -14,7 +14,8 @@ import FloatingConfigurator from '@/components/FloatingConfigurator.vue';
                     fill="var(--primary-color)"
                     fill-rule="evenodd"
                 />
-                <mask id="mask0_1413_1551" height="11" maskUnits="userSpaceOnUse" style="mask-type: alpha" width="54" x="0"
+                <mask id="mask0_1413_1551" height="11" maskUnits="userSpaceOnUse" style="mask-type: alpha" width="54"
+                      x="0"
                       y="8">
                     <path
                         d="M27 18.3652C10.5114 19.1944 0 8.88892 0 8.88892C0 8.88892 16.5176 14.5866 27 14.5866C37.4824 14.5866 54 8.88892 54 8.88892C54 8.88892 43.4886 17.5361 27 18.3652Z"
@@ -34,8 +35,9 @@ import FloatingConfigurator from '@/components/FloatingConfigurator.vue';
                     <span class="text-primary font-bold text-3xl">404</span>
                     <h1 class="text-surface-900 dark:text-surface-0 font-bold text-3xl lg:text-5xl mb-2">Not Found</h1>
                     <div class="text-surface-600 dark:text-surface-200 mb-8">Requested resource is not available.</div>
-                    <router-link class="w-full flex items-center py-8 border-surface-300 dark:border-surface-500 border-b"
-                                 to="/">
+                    <router-link
+                        class="w-full flex items-center py-8 border-surface-300 dark:border-surface-500 border-b"
+                        to="/">
                         <span
                             class="flex justify-center items-center border-2 border-primary text-primary rounded-border"
                             style="height: 3.5rem; width: 3.5rem">
@@ -46,8 +48,9 @@ import FloatingConfigurator from '@/components/FloatingConfigurator.vue';
                             <span class="text-surface-600 dark:text-surface-200 lg:text-xl">Ultricies mi quis hendrerit dolor.</span>
                         </span>
                     </router-link>
-                    <router-link class="w-full flex items-center py-8 border-surface-300 dark:border-surface-500 border-b"
-                                 to="/">
+                    <router-link
+                        class="w-full flex items-center py-8 border-surface-300 dark:border-surface-500 border-b"
+                        to="/">
                         <span
                             class="flex justify-center items-center border-2 border-primary text-primary rounded-border"
                             style="height: 3.5rem; width: 3.5rem">
@@ -58,8 +61,9 @@ import FloatingConfigurator from '@/components/FloatingConfigurator.vue';
                             <span class="text-surface-600 dark:text-surface-200 lg:text-xl">Phasellus faucibus scelerisque eleifend.</span>
                         </span>
                     </router-link>
-                    <router-link class="w-full flex items-center mb-8 py-8 border-surface-300 dark:border-surface-500 border-b"
-                                 to="/">
+                    <router-link
+                        class="w-full flex items-center mb-8 py-8 border-surface-300 dark:border-surface-500 border-b"
+                        to="/">
                         <span
                             class="flex justify-center items-center border-2 border-primary text-primary rounded-border"
                             style="height: 3.5rem; width: 3.5rem">

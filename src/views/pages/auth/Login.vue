@@ -24,7 +24,8 @@ const checked = ref(false);
                                 fill="var(--primary-color)"
                                 fill-rule="evenodd"
                             />
-                            <mask id="mask0_1413_1551" height="11" maskUnits="userSpaceOnUse" style="mask-type: alpha" width="54"
+                            <mask id="mask0_1413_1551" height="11" maskUnits="userSpaceOnUse" style="mask-type: alpha"
+                                  width="54"
                                   x="0" y="8">
                                 <path
                                     d="M27 18.3652C10.5114 19.1944 0 8.88892 0 8.88892C0 8.88892 16.5176 14.5866 27 14.5866C37.4824 14.5866 54 8.88892 54 8.88892C54 8.88892 43.4886 17.5361 27 18.3652Z"
@@ -45,7 +46,8 @@ const checked = ref(false);
 
                     <div>
                         <label class="block text-surface-900 dark:text-surface-0 text-xl font-medium mb-2" for="email1">Email</label>
-                        <InputText id="email1" v-model="email" class="w-full md:w-[30rem] mb-8" placeholder="Email address"
+                        <InputText id="email1" v-model="email" class="w-full md:w-[30rem] mb-8"
+                                   placeholder="Email address"
                                    type="text" />
 
                         <label class="block text-surface-900 dark:text-surface-0 font-medium text-xl mb-2"

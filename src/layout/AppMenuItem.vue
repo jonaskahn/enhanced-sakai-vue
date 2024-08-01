@@ -76,7 +76,8 @@ const checkActiveRoute = (item) => {
             <span class="layout-menuitem-text">{{ item.label }}</span>
             <i v-if="item.items" class="pi pi-fw pi-angle-down layout-submenu-toggler"></i>
         </a>
-        <router-link v-if="item.to && !item.items && item.visible !== false" :class="[item.class, { 'active-route': checkActiveRoute(item) }]"
+        <router-link v-if="item.to && !item.items && item.visible !== false"
+                     :class="[item.class, { 'active-route': checkActiveRoute(item) }]"
                      :to="item.to" tabindex="0" @click="itemClick($event, item, index)">
             <i :class="item.icon" class="layout-menuitem-icon"></i>
             <span class="layout-menuitem-text">{{ item.label }}</span>

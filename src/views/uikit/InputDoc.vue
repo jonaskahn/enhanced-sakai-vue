@@ -103,7 +103,8 @@ const searchCountry = (event) => {
 
                 <div class="font-semibold text-xl">AutoComplete</div>
                 <AutoComplete v-model="selectedAutoValue" :suggestions="autoFilteredValue" display="chip"
-                              dropdown multiple optionLabel="name" placeholder="Search" @complete="searchCountry($event)" />
+                              dropdown multiple optionLabel="name" placeholder="Search"
+                              @complete="searchCountry($event)" />
 
                 <div class="font-semibold text-xl">DatePicker</div>
                 <DatePicker v-model="calendarValue" :showButtonBar="true" :showIcon="true"></DatePicker>
@@ -183,7 +184,8 @@ const searchCountry = (event) => {
                     <template #value="slotProps">
                         <div
                             v-for="option of slotProps.value"
-                            :key="option.code" class="inline-flex items-center py-1 px-2 bg-primary text-primary-contrast rounded-border mr-2">
+                            :key="option.code"
+                            class="inline-flex items-center py-1 px-2 bg-primary text-primary-contrast rounded-border mr-2">
                             <span :class="'mr-2 flag flag-' + option.code.toLowerCase()"
                                   style="width: 18px; height: 12px" />
                             <div>{{ option.name }}</div>

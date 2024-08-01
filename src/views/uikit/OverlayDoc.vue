@@ -110,7 +110,8 @@ const confirm = (event) => {
                                 <template #body="slotProps">
                                     <img
                                         :alt="slotProps.data.image"
-                                        :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" class="w-16 shadow-sm" />
+                                        :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`"
+                                        class="w-16 shadow-sm" />
                                 </template>
                             </Column>
                             <Column field="price" header="Price" sortable style="min-width: 8rem">

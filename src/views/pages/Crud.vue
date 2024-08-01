@@ -129,7 +129,8 @@ const getStatusLabel = (status) => {
             <Toolbar class="mb-6">
                 <template #start>
                     <Button class="mr-2" icon="pi pi-plus" label="New" severity="secondary" @click="openNew" />
-                    <Button :disabled="!selectedProducts || !selectedProducts.length" icon="pi pi-trash" label="Delete" severity="secondary"
+                    <Button :disabled="!selectedProducts || !selectedProducts.length" icon="pi pi-trash" label="Delete"
+                            severity="secondary"
                             @click="confirmDeleteSelected" />
                 </template>
 
@@ -168,7 +169,8 @@ const getStatusLabel = (status) => {
                 <Column header="Image">
                     <template #body="slotProps">
                         <img :alt="slotProps.data.image"
-                             :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" class="rounded" style="width: 64px" />
+                             :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`"
+                             class="rounded" style="width: 64px" />
                     </template>
                 </Column>
                 <Column field="price" header="Price" sortable style="min-width: 8rem">
@@ -202,7 +204,8 @@ const getStatusLabel = (status) => {
         <Dialog v-model:visible="productDialog" :modal="true" :style="{ width: '450px' }" header="Product Details">
             <div class="flex flex-col gap-6">
                 <img v-if="product.image" :alt="product.image"
-                     :src="`https://primefaces.org/cdn/primevue/images/product/${product.image}`" class="block m-auto pb-4" />
+                     :src="`https://primefaces.org/cdn/primevue/images/product/${product.image}`"
+                     class="block m-auto pb-4" />
                 <div>
                     <label class="block font-bold mb-3" for="name">Name</label>
                     <InputText id="name" v-model.trim="product.name" :invalid="submitted && !product.name" autofocus

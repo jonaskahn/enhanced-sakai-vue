@@ -185,7 +185,8 @@ const calculateCustomerTotal = (name) => {
                 <template #body="{ data }">
                     <div class="flex items-center gap-2">
                         <img :class="`flag flag-${data.country.code}`" alt="flag"
-                             src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png" style="width: 24px" />
+                             src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png"
+                             style="width: 24px" />
                         <span>{{ data.country.name }}</span>
                     </div>
                 </template>
@@ -316,7 +317,8 @@ const calculateCustomerTotal = (name) => {
             <Column header="Image">
                 <template #body="slotProps">
                     <img :alt="slotProps.data.image"
-                         :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" class="shadow-lg" width="64" />
+                         :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`"
+                         class="shadow-lg" width="64" />
                 </template>
             </Column>
             <Column field="price" header="Price">
@@ -383,7 +385,8 @@ const calculateCustomerTotal = (name) => {
                 <template #body="slotProps">
                     <div class="flex items-center gap-2">
                         <img :class="`flag flag-${slotProps.data.country.code}`" alt="flag"
-                             src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png" style="width: 24px" />
+                             src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png"
+                             style="width: 24px" />
                         <span>{{ slotProps.data.country.name }}</span>
                     </div>
                 </template>

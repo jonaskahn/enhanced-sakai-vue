@@ -98,7 +98,8 @@ const horizontalEvents = ref(['2020', '2021', '2022', '2023']);
                             <template #content>
                                 <img v-if="slotProps.item.image"
                                      :alt="slotProps.item.name"
-                                     :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.item.image}`" class="shadow-sm" width="200" />
+                                     :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.item.image}`"
+                                     class="shadow-sm" width="200" />
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur
                                     error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam

@@ -72,7 +72,8 @@ const getSeverity = (status) => {
                     <div class="mb-4">
                         <div class="relative mx-auto">
                             <img :alt="slotProps.data.name"
-                                 :src="'https://primefaces.org/cdn/primevue/images/product/' + slotProps.data.image" class="w-full rounded" />
+                                 :src="'https://primefaces.org/cdn/primevue/images/product/' + slotProps.data.image"
+                                 class="w-full rounded" />
                             <div class="dark:bg-surface-900 absolute rounded-border" style="left: 5px; top: 5px">
                                 <Tag :severity="getSeverity(slotProps.data.inventoryStatus)"
                                      :value="slotProps.data.inventoryStatus" />

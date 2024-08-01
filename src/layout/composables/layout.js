@@ -1,11 +1,14 @@
 import { computed, reactive, readonly } from 'vue';
+import { SettingService } from '@/service/SettingService';
+
+const settingService = SettingService.INSTANCE;
 
 const layoutConfig = reactive({
-    preset: 'Aura',
-    primary: 'emerald',
-    surface: null,
-    darkTheme: false,
-    menuMode: 'static'
+    preset: settingService.getPresetTheme(),
+    primary: settingService.getPrimaryTheme(),
+    surface: settingService.getSurfaceTheme(),
+    darkTheme: settingService.isUseDarkMode(),
+    menuMode: settingService.getMenuMode()
 });
 
 const layoutState = reactive({
@@ -21,14 +24,17 @@ const layoutState = reactive({
 export function useLayout() {
     const setPrimary = (value) => {
         layoutConfig.primary = value;
+        settingService.setPrimaryTheme(value);
     };
 
     const setSurface = (value) => {
         layoutConfig.surface = value;
+        settingService.setSurfaceTheme(value);
     };
 
     const setPreset = (value) => {
         layoutConfig.preset = value;
+        settingService.setPresetTheme(value);
     };
 
     const setActiveMenuItem = (item) => {
@@ -37,6 +43,7 @@ export function useLayout() {
 
     const setMenuMode = (mode) => {
         layoutConfig.menuMode = mode;
+        settingService.setMenuMode(mode);
     };
 
     const toggleDarkMode = () => {
@@ -49,8 +56,16 @@ export function useLayout() {
         document.startViewTransition(() => executeDarkModeToggle(event));
     };
 
+    const switchOnDarkMode = () => {
+        if (isDarkTheme.value) {
+            document.documentElement.classList.toggle('app-dark');
+        }
+    };
+
     const executeDarkModeToggle = () => {
-        layoutConfig.darkTheme = !layoutConfig.darkTheme;
+        const useDarkMode = !layoutConfig.darkTheme;
+        settingService.setUseDarkMode(useDarkMode);
+        layoutConfig.darkTheme = useDarkMode;
         document.documentElement.classList.toggle('app-dark');
     };
 
@@ -90,6 +105,7 @@ export function useLayout() {
         getSurface,
         setActiveMenuItem,
         toggleDarkMode,
+        switchOnDarkMode,
         setPrimary,
         setSurface,
         setPreset,
