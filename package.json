@@ -1,34 +1,38 @@
 {
     "name": "sakai-vue",
-    "version": "4.1.0",
+    "version": "4.0.0",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "lint": "eslint --fix . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+        "lint": "eslint --fix . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+        "format:src": "prettier src --write",
+        "format:all": "prettier . --write"
     },
     "dependencies": {
-        "@primevue/themes": "^4.0.0",
-        "chart.js": "3.3.2",
-        "primeicons": "^6.0.1",
-        "primevue": "^4.0.0",
+        "@primeuix/styled": "^0.0.5",
+        "@primevue/themes": "^4.0.3",
+        "chart.js": "4.4.3",
+        "primeicons": "^7.0.0",
+        "primevue": "^4.0.3",
         "vue": "^3.4.34",
+        "vue-loading-overlay": "^6.0.4",
         "vue-router": "^4.4.0"
     },
     "devDependencies": {
-        "@primevue/auto-import-resolver": "^4.0.1",
-        "@rushstack/eslint-patch": "^1.8.0",
-        "@vitejs/plugin-vue": "^5.0.5",
+        "@primevue/auto-import-resolver": "^4.0.3",
+        "@rushstack/eslint-patch": "^1.10.4",
+        "@vitejs/plugin-vue": "^5.1.1",
         "@vue/eslint-config-prettier": "^9.0.0",
         "autoprefixer": "^10.4.19",
-        "eslint": "^8.57.0",
-        "eslint-plugin-vue": "^9.23.0",
+        "eslint": "~8.57.0",
+        "eslint-plugin-vue": "^9.27.0",
         "postcss": "^8.4.40",
-        "prettier": "^3.2.5",
-        "sass": "^1.55.0",
-        "tailwindcss": "^3.4.6",
-        "tailwindcss-primeui": "^0.3.2",
+        "prettier": "^3.3.3",
+        "sass": "^1.77.8",
+        "tailwindcss": "^3.4.7",
+        "tailwindcss-primeui": "^0.3.4",
         "unplugin-vue-components": "^0.27.3",
-        "vite": "^5.3.1"
+        "vite": "^5.3.5"
     }
 }

@@ -80,5 +80,20 @@ export function useLayout() {
 
     const getSurface = computed(() => layoutConfig.surface);
 
-    return { layoutConfig: readonly(layoutConfig), layoutState: readonly(layoutState), onMenuToggle, isSidebarActive, isDarkTheme, getPrimary, getSurface, setActiveMenuItem, toggleDarkMode, setPrimary, setSurface, setPreset, resetMenu, setMenuMode };
+    return {
+        layoutConfig: readonly(layoutConfig),
+        layoutState: readonly(layoutState),
+        onMenuToggle,
+        isSidebarActive,
+        isDarkTheme,
+        getPrimary,
+        getSurface,
+        setActiveMenuItem,
+        toggleDarkMode,
+        setPrimary,
+        setSurface,
+        setPreset,
+        resetMenu,
+        setMenuMode
+    };
 }

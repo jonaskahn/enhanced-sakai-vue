@@ -428,7 +428,7 @@ const onContextRightClick = (event) => {
             <template #end>
                 <IconField iconPosition="left">
                     <InputIcon class="pi pi-search" />
-                    <InputText type="text" placeholder="Search" />
+                    <InputText placeholder="Search" type="text" />
                 </IconField>
             </template>
         </Menubar>
@@ -483,7 +483,7 @@ const onContextRightClick = (event) => {
             <div class="card">
                 <div class="font-semibold text-xl mb-4">Overlay Menu</div>
                 <Menu ref="menu" :model="overlayMenuItems" :popup="true" />
-                <Button type="button" label="Options" icon="pi pi-angle-down" @click="toggleMenu" style="width: auto" />
+                <Button icon="pi pi-angle-down" label="Options" style="width: auto" type="button" @click="toggleMenu" />
             </div>
 
             <div class="card" @contextmenu="onContextRightClick">
