@@ -10,9 +10,9 @@ import { LoadingPlugin } from 'vue-loading-overlay';
 import '@/assets/styles.scss';
 import '@/assets/tailwind.css';
 import 'vue-loading-overlay/dist/css/index.css';
-import 'flag-icons/css/flag-icons.min.css';
 
 import Lara from '@primevue/themes/lara';
+import i18n from '@/locales';
 
 const app = createApp(App);
 
@@ -24,6 +24,9 @@ app.use(PrimeVue, {
         }
     }
 });
+
+app.use(i18n);
+app.config.globalProperties.$tt = i18n.global.t;
 
 app.use(LoadingPlugin);
 app.use(router);

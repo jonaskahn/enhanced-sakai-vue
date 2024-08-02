@@ -27,7 +27,7 @@ const statuses = ref([
 ]);
 
 const formatCurrency = (value) => {
-    if (value) return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    if (value) return value.toLocaleString('en', { style: 'currency', currency: 'USD' });
 };
 const openNew = () => {
     product.value = {};

@@ -6,9 +6,10 @@ import LangPalette from '@/components/LangPalette.vue';
 
 const { onMenuToggle, toggleDarkMode, isDarkTheme } = useLayout();
 
-const langPref = ref();
+const langPopupRef = ref();
+const langPaletteRef = ref();
 const toggleLanguage = (event) => {
-    langPref.value.toggle(event);
+    langPopupRef.value.toggle(event);
 };
 </script>
 
@@ -87,8 +88,17 @@ const toggleLanguage = (event) => {
                 </div>
             </div>
         </div>
-        <Popover ref="langPref">
-            <lang-palette />
+        <Popover ref="langPopupRef" class="p-lang-menu">
+            <lang-palette ref="langPaletteRef" />
         </Popover>
     </div>
 </template>
+<style lang="scss">
+div.p-lang-menu.p-popover:before {
+    content: none !important;
+}
+
+div.p-lang-menu.p-popover:after {
+    content: none !important;
+}
+</style>

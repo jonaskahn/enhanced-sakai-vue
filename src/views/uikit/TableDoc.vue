@@ -119,11 +119,11 @@ const collapseAll = () => {
 };
 
 const formatCurrency = (value) => {
-    return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    return value.toLocaleString('en', { style: 'currency', currency: 'USD' });
 };
 
 const formatDate = (value) => {
-    return value.toLocaleDateString('en-US', {
+    return value.toLocaleDateString('en', {
         day: '2-digit',
         month: '2-digit',
         year: 'numeric'

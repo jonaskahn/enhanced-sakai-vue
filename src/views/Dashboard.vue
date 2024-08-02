@@ -91,7 +91,7 @@ function setChartOptions() {
 }
 
 const formatCurrency = (value) => {
-    return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    return value.toLocaleString('en', { style: 'currency', currency: 'USD' });
 };
 
 watch([getPrimary, getSurface, isDarkTheme], () => {

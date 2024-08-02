@@ -36,7 +36,7 @@ export class SettingService {
     }
 
     getPresetTheme() {
-        return localStorage.getItem(settings.PRESET_THEME) || 'Aura';
+        return localStorage.getItem(settings.PRESET_THEME) || 'Lara';
     }
 
     setPresetTheme(value) {

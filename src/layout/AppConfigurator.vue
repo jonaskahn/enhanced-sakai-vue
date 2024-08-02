@@ -64,7 +64,7 @@ function onMenuModeChange() {
     >
         <div class="flex flex-col gap-4">
             <div>
-                <span class="text-sm text-muted-color font-semibold">Primary</span>
+                <span class="text-sm text-muted-color font-semibold">{{ $tt('appConfig.label.preset-color') }}</span>
                 <div class="pt-2 flex gap-2 flex-wrap justify-between">
                     <button
                         v-for="primaryColor of primaryColors"
@@ -78,7 +78,7 @@ function onMenuModeChange() {
                 </div>
             </div>
             <div>
-                <span class="text-sm text-muted-color font-semibold">Surface</span>
+                <span class="text-sm text-muted-color font-semibold">{{ $tt('appConfig.label.surface-color') }}</span>
                 <div class="pt-2 flex gap-2 flex-wrap justify-between">
                     <button
                         v-for="surface of surfaces"
@@ -95,11 +95,11 @@ function onMenuModeChange() {
                 </div>
             </div>
             <div class="flex flex-col gap-2">
-                <span class="text-sm text-muted-color font-semibold">Presets</span>
+                <span class="text-sm text-muted-color font-semibold">{{ $tt('appConfig.label.theme') }}</span>
                 <SelectButton v-model="preset" :allowEmpty="false" :options="presetOptions" @change="onPresetChange" />
             </div>
             <div class="flex flex-col gap-2">
-                <span class="text-sm text-muted-color font-semibold">Menu Mode</span>
+                <span class="text-sm text-muted-color font-semibold">{{ $tt('appConfig.label.menu-mode') }}</span>
                 <SelectButton v-model="menuMode" :allowEmpty="false" :options="menuModeOptions" optionLabel="label" optionValue="value" @change="onMenuModeChange" />
             </div>
         </div>
