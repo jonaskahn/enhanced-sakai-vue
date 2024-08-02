@@ -1,4 +1,4 @@
-export default {
+const SETTINGS = {
     LOADING_PROPERTIES: {
         loader: 'bars',
         opacity: 0.4,
@@ -13,3 +13,5 @@ export default {
     PRESET_THEME: 'AppSettingPresetTheme',
     CURRENT_LOCALE: 'AppSettingCurrentLocale'
 };
+
+export default SETTINGS;

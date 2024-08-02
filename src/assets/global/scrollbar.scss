@@ -8,7 +8,7 @@
 }
 
 ::-webkit-scrollbar {
-    width: 0.5rem;
+    width: 0.2rem;
     background-color: transparent;
 }
 
@@ -16,6 +16,12 @@
     width: 0.2rem;
     background-color: transparent;
 }
+
+::-webkit-scrollbar:vertical {
+    width: 0.5rem;
+    background-color: transparent;
+}
+
 
 ::-webkit-scrollbar-thumb {
     border-radius: 20px;

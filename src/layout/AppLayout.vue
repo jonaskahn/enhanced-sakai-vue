@@ -4,6 +4,7 @@ import { computed, ref, watch } from 'vue';
 import AppFooter from './AppFooter.vue';
 import AppSidebar from './AppSidebar.vue';
 import AppTopbar from './AppTopbar.vue';
+import { useRoute } from 'vue-router';
 
 const { layoutConfig, layoutState, isSidebarActive, resetMenu } = useLayout();
 
@@ -48,19 +49,32 @@ const isOutsideClicked = (event) => {
 
     return !(sidebarEl.isSameNode(event.target) || sidebarEl.contains(event.target) || topbarEl.isSameNode(event.target) || topbarEl.contains(event.target));
 };
+
+const route = useRoute();
+const key = computed(() => {
+    return route.path;
+});
 </script>
 
 <template>
-    <div :class="containerClass" class="layout-wrapper">
-        <app-topbar></app-topbar>
-        <app-sidebar></app-sidebar>
-        <div class="layout-main-container">
-            <div class="layout-main">
-                <router-view></router-view>
+    <div>
+        <div :class="containerClass" class="layout-wrapper">
+            <app-topbar></app-topbar>
+            <app-sidebar></app-sidebar>
+            <div class="layout-main-container">
+                <div class="layout-main">
+                    <router-view v-slot="{ Component }">
+                        <transition :duration="500" mode="out-in" name="fade-transform">
+                            <div :key="key">
+                                <component :is="Component"></component>
+                            </div>
+                        </transition>
+                    </router-view>
+                </div>
+                <app-footer></app-footer>
             </div>
-            <app-footer></app-footer>
+            <div class="layout-mask animate-fadein"></div>
         </div>
-        <div class="layout-mask animate-fadein"></div>
+        <Toast />
     </div>
-    <Toast />
 </template>

@@ -19,16 +19,16 @@ const LOCALE_OPTIONS = [
 ];
 
 function getCurrentLocale() {
-    return localStorage.getItem(settings.CURRENT_LOCALE) || 'en';
+    return localStorage.getItem(settings.CURRENT_LOCALE) || import.meta.env.VITE_DEFAULT_LOCALE;
 }
 
 function setCurrentLocale(value) {
-    localStorage.setItem(settings.CURRENT_LOCALE, value || 'en');
+    localStorage.setItem(settings.CURRENT_LOCALE, value || import.meta.env.VITE_DEFAULT_LOCALE);
 }
 
 const i18n = createI18n({
     locale: getCurrentLocale(),
-    fallbackLocale: 'en',
+    fallbackLocale: import.meta.env.VITE_FALLBACK_LOCALE,
     legacy: false,
     allowComposition: true,
     messages: {

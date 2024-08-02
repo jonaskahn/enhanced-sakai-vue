@@ -10,15 +10,15 @@ import { LoadingPlugin } from 'vue-loading-overlay';
 import '@/assets/styles.scss';
 import '@/assets/tailwind.css';
 import 'vue-loading-overlay/dist/css/index.css';
-
-import Lara from '@primevue/themes/lara';
 import i18n from '@/locales';
+import { SettingService } from '@/service/SettingService';
+import VueMobileDetection from 'vue-mobile-detection';
 
-const app = createApp(App);
+export const app = createApp(App);
 
 app.use(PrimeVue, {
     theme: {
-        preset: Lara,
+        preset: SettingService.INSTANCE.getPresetThemeComponent(),
         options: {
             darkModeSelector: '.app-dark'
         }
@@ -28,6 +28,7 @@ app.use(PrimeVue, {
 app.use(i18n);
 app.config.globalProperties.$tt = i18n.global.t;
 
+app.use(VueMobileDetection);
 app.use(LoadingPlugin);
 app.use(router);
 app.use(ToastService);

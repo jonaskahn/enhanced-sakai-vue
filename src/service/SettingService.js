@@ -1,45 +1,51 @@
-import settings from '@/constants/settings';
+import SETTINGS from '@/constants/settings';
+import Lara from '@primevue/themes/lara';
+import Aura from '@primevue/themes/aura';
 
 export class SettingService {
     static INSTANCE = new SettingService();
 
     isUseDarkMode() {
-        return localStorage.getItem(settings.USE_DARK_MODE) === 'on';
+        return localStorage.getItem(SETTINGS.USE_DARK_MODE) === 'on';
     }
 
     setUseDarkMode(value) {
-        localStorage.setItem(settings.USE_DARK_MODE, value ? 'on' : 'off');
+        localStorage.setItem(SETTINGS.USE_DARK_MODE, value ? 'on' : 'off');
     }
 
     getMenuMode() {
-        return localStorage.getItem(settings.MENU_MODE) || 'static';
+        return localStorage.getItem(SETTINGS.MENU_MODE) || 'static';
     }
 
     setMenuMode(value) {
-        localStorage.setItem(settings.MENU_MODE, value);
+        localStorage.setItem(SETTINGS.MENU_MODE, value);
     }
 
     getSurfaceTheme() {
-        return localStorage.getItem(settings.SURFACE_THEME) || 'gray';
+        return localStorage.getItem(SETTINGS.SURFACE_THEME) || 'gray';
     }
 
     setSurfaceTheme(value) {
-        localStorage.setItem(settings.SURFACE_THEME, value);
+        localStorage.setItem(SETTINGS.SURFACE_THEME, value);
     }
 
     getPrimaryTheme() {
-        return localStorage.getItem(settings.PRIMARY_THEME) || 'emerald';
+        return localStorage.getItem(SETTINGS.PRIMARY_THEME) || 'emerald';
     }
 
     setPrimaryTheme(value) {
-        localStorage.setItem(settings.PRIMARY_THEME, value);
+        localStorage.setItem(SETTINGS.PRIMARY_THEME, value);
     }
 
     getPresetTheme() {
-        return localStorage.getItem(settings.PRESET_THEME) || 'Lara';
+        return localStorage.getItem(SETTINGS.PRESET_THEME) || 'Lara';
+    }
+
+    getPresetThemeComponent() {
+        return this.getPresetTheme() === 'Lara' ? Lara : Aura;
     }
 
     setPresetTheme(value) {
-        localStorage.setItem(settings.PRESET_THEME, value);
+        localStorage.setItem(SETTINGS.PRESET_THEME, value);
     }
 }
