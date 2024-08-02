@@ -37,17 +37,12 @@ const toggleLanguage = (event) => {
                         />
                     </g>
                 </svg>
-
-                <span>SAKAI</span>
+                <span class="hidden md:block">SAKAI</span>
             </router-link>
         </div>
 
         <div class="layout-topbar-actions">
             <div class="layout-config-menu">
-                <button class="layout-topbar-action" type="button" @click="toggleLanguage">
-                    <i class="pi pi-globe"></i>
-                </button>
-
                 <button class="layout-topbar-action" type="button" @click="toggleDarkMode">
                     <i :class="['pi', { 'pi-moon': isDarkTheme, 'pi-sun': !isDarkTheme }]"></i>
                 </button>
@@ -62,6 +57,10 @@ const toggleLanguage = (event) => {
                     </button>
                     <AppConfigurator />
                 </div>
+
+                <button class="layout-topbar-action" type="button" @click="toggleLanguage">
+                    <i class="pi pi-globe"></i>
+                </button>
             </div>
 
             <button
