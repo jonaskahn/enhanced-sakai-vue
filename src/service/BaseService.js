@@ -1,15 +1,16 @@
 import NotificationService from '@/service/NotificationService';
-import { httpSecure, ResponseType } from '@/common/http';
+import { http, httpSecure, ResponseType } from '@/common/http';
 import router from '@/router';
+import PageSpec from '@/router/page';
 
 export default class BaseService {
     static #showMessage(res, notifySuccess, notifyError) {
-        let message = res.state === ResponseType.UNDEFINED ? 'service.default-message.unknown-error' : res.message;
-        if (notifySuccess && res.state === ResponseType.SUCCESS) {
+        let message = res.status === ResponseType.UNDEFINED ? 'service.default-message.unknown-error' : res.message;
+        if (notifySuccess && res.status === ResponseType.SUCCESS) {
             this.showSuccessMessage(message);
             return;
         }
-        if (notifyError && res.state !== ResponseType.SUCCESS) {
+        if (notifyError && res.status !== ResponseType.SUCCESS) {
             this.showErrorMessage(message);
         }
     }
@@ -28,33 +29,25 @@ export default class BaseService {
 
     static #handleResponse(res, option) {
         BaseService.#showMessage(res, option.notifyOnSuccess, option.notifyOnError);
-        if (res.state === ResponseType.UNAUTHORIZED) {
+        if (res.status === ResponseType.UNAUTHORIZED) {
             return router.push({
-                name: Page.AUTH.LOGIN.name
+                name: PageSpec.AUTH.LOGIN.name
             });
         }
-        if (res.state === ResponseType.ACCESS_DENIED) {
+        if (res.status === ResponseType.ACCESS_DENIED) {
             return router.push({
-                name: Page.ACCESS.DENIED.name
+                name: PageSpec.ACCESS.DENIED.name
             });
         }
-        if ((option.redirectOnerror ?? false) && res.state !== ResponseType.SUCCESS) {
+        if ((option.redirectOnError ?? false) && res.status !== ResponseType.SUCCESS) {
             return router.push({
-                name: Page.ACCESS.ERROR.name
+                name: PageSpec.ACCESS.ERROR.name
             });
         }
-        switch (res.state) {
-            case ResponseType.SUCCESS:
-                return Promise.resolve({
-                    state: true,
-                    payload: res.payload
-                });
-            default:
-                return Promise.resolve({
-                    state: false,
-                    payload: res.message
-                });
-        }
+        return Promise.resolve({
+            state: res.status === ResponseType.SUCCESS,
+            payload: res.payload
+        });
     }
 
     async request(
@@ -88,7 +81,15 @@ export default class BaseService {
             notifyOnError: true,
             redirectOnError: false
         }
-    ) {}
+    ) {
+        const res = await http.request({
+            path: spec.path,
+            method: spec.method,
+            data: spec.data
+        });
+
+        return BaseService.#handleResponse(res, options);
+    }
 
     async #requestAuth(
         spec = {
@@ -102,7 +103,7 @@ export default class BaseService {
             redirectOnError: false
         }
     ) {
-        const res = await httpSecure()({
+        const res = await httpSecure.request({
             path: spec.path,
             method: spec.method,
             data: spec.data

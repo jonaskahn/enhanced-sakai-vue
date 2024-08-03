@@ -1,10 +1,29 @@
 <script setup>
 import FloatingConfigurator from '@/components/FloatingConfigurator.vue';
-import { ref } from 'vue';
+import { inject, ref } from 'vue';
+import AuthService from '@/service/AuthenService';
+import SETTINGS from '@/constants/settings';
+import router from '@/router';
+import PageSpec from '@/router/page';
 
 const email = ref('');
 const password = ref('');
 const checked = ref(false);
+
+const $loading = inject('$loading');
+const login = async () => {
+    const loader = $loading.show(SETTINGS.LOADING_PROPERTIES);
+    try {
+        const result = await AuthService.INSTANCE.fakeLogin();
+        if (result) {
+            await router.push({
+                name: PageSpec.APP.DASHBOARD.name
+            });
+        }
+    } finally {
+        setTimeout(() => loader.hide(), 250);
+    }
+};
 </script>
 
 <template>
@@ -50,7 +69,7 @@ const checked = ref(false);
                                 </div>
                                 <span class="font-medium no-underline ml-2 text-right cursor-pointer text-primary">Forgot password?</span>
                             </div>
-                            <Button as="router-link" class="w-full" label="Sign In" to="/"></Button>
+                            <Button class="w-full" label="Sign In" @click="login"></Button>
                         </div>
                     </div>
                 </div>
@@ -60,12 +79,12 @@ const checked = ref(false);
 </template>
 
 <style scoped>
-.pi-eye {
+:deep(.pi-eye) {
     transform: scale(1.6);
     margin-right: 1rem;
 }
 
-.pi-eye-slash {
+:deep(.pi-eye-slash) {
     transform: scale(1.6);
     margin-right: 1rem;
 }

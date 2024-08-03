@@ -42,7 +42,7 @@ function createInstance(headers = {}) {
     });
     instance.interceptors.response.use(
         function (response) {
-            return Promise.resolve(new ResponseData(ResponseType.SUCCESS, response.data.message, response.data.payload));
+            return Promise.resolve(new ResponseData(ResponseType.SUCCESS, response.data.payload));
         },
         function (error) {
             logger.error(error);
@@ -58,19 +58,30 @@ function createInstance(headers = {}) {
     return instance;
 }
 
+/**
+ * JSON response:
+ * - Success: {
+ *     status: 200,
+ *     payload: object
+ * }
+ * - Error: {
+ *     status: 4xx || 5xx,
+ *     payload: string message
+ * }
+ * @param res
+ * @returns {Promise<Awaited<ResponseData>>}
+ */
 async function onResponseError(res) {
-    const message = res.data.message;
-    const details = res.data.payload.details ?? '';
-    const summary = message + (details instanceof Object ? '\n' + Object.values(details).join('\n') : details);
+    res.data.payload;
     switch (res.status) {
         case 400:
-            return Promise.resolve(new ResponseData(ResponseType.BAD_REQUEST, summary ?? translate('service.default-message.response-status-400')));
+            return Promise.resolve(new ResponseData(ResponseType.BAD_REQUEST, res.data.payload ?? translate('service.default-message.response-status-400')));
         case 401:
-            return Promise.resolve(new ResponseData(ResponseType.UNAUTHORIZED, summary ?? translate('service.default-message.response-status-401')));
+            return Promise.resolve(new ResponseData(ResponseType.UNAUTHORIZED, res.data.payload ?? translate('service.default-message.response-status-401')));
         case 403:
-            return Promise.resolve(new ResponseData(ResponseType.ACCESS_DENIED, summary ?? translate('service.default-message.response-status-403')));
+            return Promise.resolve(new ResponseData(ResponseType.ACCESS_DENIED, res.data.payload ?? translate('service.default-message.response-status-403')));
         case 404:
-            return Promise.resolve(new ResponseData(ResponseType.NOT_FOUND, summary ?? translate('service.default-message.response-status-403')));
+            return Promise.resolve(new ResponseData(ResponseType.NOT_FOUND, res.data.payload ?? translate('service.default-message.response-status-403')));
         default:
             return Promise.resolve(new ResponseData(ResponseType.UNDEFINED, translate('service.default-message.unknown-error')));
     }
@@ -86,6 +97,6 @@ async function onRequestError(error) {
 
 const http = createInstance();
 const httpSecure = createInstance({
-    Authorization: `Bearer ${localStorage.getItem(DEFAULTS.TOKEN.ACCESS_TOKEN)}`
+    Authorization: `Bearer ${localStorage.getItem(DEFAULTS.TOKEN.ACCESS)}`
 });
 export { http, httpSecure };

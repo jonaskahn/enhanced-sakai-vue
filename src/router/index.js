@@ -1,6 +1,10 @@
 import AppLayout from '@/layout/AppLayout.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import page from '@/router/page';
+import PageSpec from '@/router/page';
+import { nextTick } from 'vue';
+import { translate } from '@/locales';
+import useAuthStore from '@/store/authStore';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -9,131 +13,91 @@ const router = createRouter({
             path: '/',
             component: AppLayout,
             children: [
-                {
-                    path: '/',
-                    name: 'dashboard',
-                    component: () => import('@/views/Dashboard.vue')
-                },
-                {
-                    path: '/uikit/formlayout',
-                    name: 'formlayout',
-                    component: () => import('@/views/uikit/FormLayout.vue')
-                },
-                {
-                    path: '/uikit/input',
-                    name: 'input',
-                    component: () => import('@/views/uikit/InputDoc.vue')
-                },
-                {
-                    path: '/uikit/button',
-                    name: 'button',
-                    component: () => import('@/views/uikit/ButtonDoc.vue')
-                },
-                {
-                    path: '/uikit/table',
-                    name: 'table',
-                    component: () => import('@/views/uikit/TableDoc.vue')
-                },
-                {
-                    path: '/uikit/list',
-                    name: 'list',
-                    component: () => import('@/views/uikit/ListDoc.vue')
-                },
-                {
-                    path: '/uikit/tree',
-                    name: 'tree',
-                    component: () => import('@/views/uikit/TreeDoc.vue')
-                },
-                {
-                    path: '/uikit/panel',
-                    name: 'panel',
-                    component: () => import('@/views/uikit/PanelsDoc.vue')
-                },
+                page.APP.DASHBOARD,
 
-                {
-                    path: '/uikit/overlay',
-                    name: 'overlay',
-                    component: () => import('@/views/uikit/OverlayDoc.vue')
-                },
-                {
-                    path: '/uikit/media',
-                    name: 'media',
-                    component: () => import('@/views/uikit/MediaDoc.vue')
-                },
-                {
-                    path: '/uikit/message',
-                    name: 'message',
-                    component: () => import('@/views/uikit/MessagesDoc.vue')
-                },
-                {
-                    path: '/uikit/file',
-                    name: 'file',
-                    component: () => import('@/views/uikit/FileDoc.vue')
-                },
-                {
-                    path: '/uikit/menu',
-                    name: 'menu',
-                    component: () => import('@/views/uikit/MenuDoc.vue')
-                },
-                {
-                    path: '/uikit/charts',
-                    name: 'charts',
-                    component: () => import('@/views/uikit/ChartDoc.vue')
-                },
-                {
-                    path: '/uikit/misc',
-                    name: 'misc',
-                    component: () => import('@/views/uikit/MiscDoc.vue')
-                },
-                {
-                    path: '/uikit/timeline',
-                    name: 'timeline',
-                    component: () => import('@/views/uikit/TimelineDoc.vue')
-                },
-                {
-                    path: '/pages/empty',
-                    name: 'empty',
-                    component: () => import('@/views/pages/Empty.vue')
-                },
-                {
-                    path: '/pages/crud',
-                    name: 'crud',
-                    component: () => import('@/views/pages/Crud.vue')
-                },
-                {
-                    path: '/documentation',
-                    name: 'documentation',
-                    component: () => import('@/views/pages/Documentation.vue')
-                }
+                page.APP.UIKIT.FORM_LAYOUT,
+                page.APP.UIKIT.INPUT,
+                page.APP.UIKIT.BUTTON,
+                page.APP.UIKIT.TABLE,
+                page.APP.UIKIT.LIST,
+                page.APP.UIKIT.TREE,
+                page.APP.UIKIT.PANEL,
+                page.APP.UIKIT.OVERLAY,
+                page.APP.UIKIT.MEDIA,
+                page.APP.UIKIT.MESSAGE,
+                page.APP.UIKIT.FILE,
+                page.APP.UIKIT.MENU,
+                page.APP.UIKIT.CHARTS,
+                page.APP.UIKIT.MISC,
+                page.APP.UIKIT.TIMELINE,
+
+                page.APP.DOCUMENT,
+                page.APP.EMPTY,
+                page.APP.DOCUMENT,
+                page.APP.CRUD
             ]
         },
-        {
-            path: '/landing',
-            name: 'landing',
-            component: () => import('@/views/pages/Landing.vue')
-        },
-        {
-            path: '/pages/notfound',
-            name: 'notfound',
-            component: () => import('@/views/pages/NotFound.vue')
-        },
-
-        {
-            path: page.AUTH.LOGIN.path,
-            name: page.AUTH.LOGIN.name,
-            component: page.AUTH.LOGIN.component
-        },
-        {
-            path: '/auth/access',
-            name: 'accessDenied',
-            component: () => import('@/views/pages/auth/Access.vue')
-        },
-        {
-            path: '/auth/error',
-            name: 'error',
-            component: () => import('@/views/pages/auth/Error.vue')
-        }
+        page.APP.LANDING,
+        page.AUTH.LOGIN,
+        page.ACCESS.NOT_FOUND,
+        page.ACCESS.ERROR,
+        page.ACCESS.DENIED
     ]
+});
+
+const whiteListUrl = [PageSpec.ACCESS.DENIED.name, PageSpec.ACCESS.NOT_FOUND.name, PageSpec.ACCESS.ERROR.name, PageSpec.AUTH.LOGIN.name];
+
+router.beforeEach(async (to, from, next) => {
+    if (whiteListUrl.includes(to.name)) {
+        next();
+    } else if (isAuthenticated()) {
+        await redirectIfValid(to, from, next);
+    } else {
+        await redirectIfInvalid(to, from, next);
+    }
+});
+
+function isAuthenticated() {
+    const authStore = useAuthStore();
+    return authStore.isAuthenticated;
+}
+
+async function redirectIfInvalid(to, from, next) {
+    if (to.path !== PageSpec.AUTH.LOGIN.path) {
+        await router.push({
+            path: PageSpec.AUTH.LOGIN.path
+        });
+    } else {
+        next();
+    }
+}
+
+async function redirectIfValid(to, from, next) {
+    if (to.name === PageSpec.AUTH.LOGIN.name) {
+        await router.push(PageSpec.APP.DASHBOARD.path);
+    } else if (hasPermission(to.meta.permissions ?? [])) {
+        next();
+    } else {
+        await router.push(PageSpec.ACCESS.DENIED.path);
+    }
+}
+
+function hasPermission(permissions) {
+    const authStore = useAuthStore();
+    return permissions.length === 0 || containsAny(permissions, authStore.getPermissions);
+}
+
+function containsAny(arr1, arr2) {
+    return arr1.some((element) => {
+        return arr2.indexOf(element) !== -1;
+    });
+}
+
+router.afterEach(async (to) => {
+    await nextTick(() => {
+        const pageTitle = translate(to.meta.title ?? to.name.toUpperCase() + '');
+        document.title = translate('global.menu-title.default') + ' - ' + pageTitle;
+    });
 });
 
 export default router;
