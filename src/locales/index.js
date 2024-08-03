@@ -2,7 +2,6 @@ import { createI18n } from 'vue-i18n';
 import en from '@/locales/en';
 import vi from '@/locales/vi';
 import settings from '@/constants/settings';
-import { getCurrentInstance } from 'vue';
 
 const LOCALE_OPTIONS = [
     {
@@ -46,8 +45,7 @@ function switchLocale(locale) {
 export { LOCALE_OPTIONS, getCurrentLocale, switchLocale };
 
 export function translate(key) {
-    const { appContext } = getCurrentInstance();
-    return appContext.config.globalProperties.$i18n.t(key);
+    return i18n.global.t(key);
 }
 
 export default i18n;

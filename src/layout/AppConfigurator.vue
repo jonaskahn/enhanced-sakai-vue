@@ -6,6 +6,8 @@ import Lara from '@primevue/themes/lara';
 import { ref } from 'vue';
 import { useThemeSetting } from '@/layout/composables/theme';
 
+const props = defineProps({ showMenuMode: Boolean });
+
 const { layoutConfig, setPrimary, setSurface, setPreset, isDarkTheme, setMenuMode } = useLayout();
 const { primaryColors, surfaces, getPresetExtColor } = useThemeSetting();
 
@@ -98,7 +100,7 @@ function onMenuModeChange() {
                 <span class="text-sm text-muted-color font-semibold">{{ $tt('appConfig.label.theme') }}</span>
                 <SelectButton v-model="preset" :allowEmpty="false" :options="presetOptions" @change="onPresetChange" />
             </div>
-            <div class="flex flex-col gap-2">
+            <div v-if="props.showMenuMode" class="flex flex-col gap-2">
                 <span class="text-sm text-muted-color font-semibold">{{ $tt('appConfig.label.menu-mode') }}</span>
                 <SelectButton v-model="menuMode" :allowEmpty="false" :options="menuModeOptions" optionLabel="label" optionValue="value" @change="onMenuModeChange" />
             </div>

@@ -1,16 +1,9 @@
 <script setup>
 import { useLayout } from '@/layout/composables/layout';
 import AppConfigurator from './AppConfigurator.vue';
-import { ref } from 'vue';
 import LangPalette from '@/components/LangPalette.vue';
 
 const { onMenuToggle, toggleDarkMode, isDarkTheme } = useLayout();
-
-const langPopupRef = ref();
-const langPaletteRef = ref();
-const toggleLanguage = (event) => {
-    langPopupRef.value.toggle(event);
-};
 </script>
 
 <template>
@@ -55,13 +48,11 @@ const toggleLanguage = (event) => {
                     >
                         <i class="pi pi-palette"></i>
                     </button>
-                    <AppConfigurator />
+                    <AppConfigurator :show-menu-mode="true" />
                 </div>
-
-                <button class="layout-topbar-action" type="button" @click="toggleLanguage">
-                    <i class="pi pi-globe"></i>
-                </button>
             </div>
+
+            <lang-palette />
 
             <button
                 v-styleclass="{ selector: '@next', enterFromClass: 'hidden', enterActiveClass: 'animate-scalein', leaveToClass: 'hidden', leaveActiveClass: 'animate-fadeout', hideOnOutsideClick: true }"
@@ -87,17 +78,5 @@ const toggleLanguage = (event) => {
                 </div>
             </div>
         </div>
-        <Popover ref="langPopupRef" class="p-lang-menu">
-            <lang-palette ref="langPaletteRef" />
-        </Popover>
     </div>
 </template>
-<style lang="scss">
-div.p-lang-menu.p-popover:before {
-    content: none !important;
-}
-
-div.p-lang-menu.p-popover:after {
-    content: none !important;
-}
-</style>

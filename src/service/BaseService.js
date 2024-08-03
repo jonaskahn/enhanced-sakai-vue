@@ -1,5 +1,6 @@
 import NotificationService from '@/service/NotificationService';
-import { ResponseType } from '@/common/http';
+import { httpSecure, ResponseType } from '@/common/http';
+import router from '@/router';
 
 export default class BaseService {
     static #showMessage(res, notifySuccess, notifyError) {
@@ -25,6 +26,37 @@ export default class BaseService {
         }).then();
     }
 
+    static #handleResponse(res, option) {
+        BaseService.#showMessage(res, option.notifyOnSuccess, option.notifyOnError);
+        if (res.state === ResponseType.UNAUTHORIZED) {
+            return router.push({
+                name: Page.AUTH.LOGIN.name
+            });
+        }
+        if (res.state === ResponseType.ACCESS_DENIED) {
+            return router.push({
+                name: Page.ACCESS.DENIED.name
+            });
+        }
+        if ((option.redirectOnerror ?? false) && res.state !== ResponseType.SUCCESS) {
+            return router.push({
+                name: Page.ACCESS.ERROR.name
+            });
+        }
+        switch (res.state) {
+            case ResponseType.SUCCESS:
+                return Promise.resolve({
+                    state: true,
+                    payload: res.payload
+                });
+            default:
+                return Promise.resolve({
+                    state: false,
+                    payload: res.message
+                });
+        }
+    }
+
     async request(
         spec = {
             path: '',
@@ -33,7 +65,8 @@ export default class BaseService {
         },
         options = {
             secure: true,
-            showToast: false,
+            notifyOnSuccess: false,
+            notifyOnError: true,
             redirectOnError: false
         }
     ) {
@@ -51,7 +84,8 @@ export default class BaseService {
             data: null
         },
         options = {
-            showToast: false,
+            notifyOnSuccess: false,
+            notifyOnError: true,
             redirectOnError: false
         }
     ) {}
@@ -63,8 +97,17 @@ export default class BaseService {
             data: null
         },
         options = {
-            showToast: false,
+            notifyOnSuccess: false,
+            notifyOnError: true,
             redirectOnError: false
         }
-    ) {}
+    ) {
+        const res = await httpSecure()({
+            path: spec.path,
+            method: spec.method,
+            data: spec.data
+        });
+
+        return BaseService.#handleResponse(res, options);
+    }
 }

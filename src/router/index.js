@@ -1,5 +1,6 @@
 import AppLayout from '@/layout/AppLayout.vue';
 import { createRouter, createWebHistory } from 'vue-router';
+import page from '@/router/page';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -118,9 +119,9 @@ const router = createRouter({
         },
 
         {
-            path: '/auth/login',
-            name: 'login',
-            component: () => import('@/views/pages/auth/Login.vue')
+            path: page.AUTH.LOGIN.path,
+            name: page.AUTH.LOGIN.name,
+            component: page.AUTH.LOGIN.component
         },
         {
             path: '/auth/access',

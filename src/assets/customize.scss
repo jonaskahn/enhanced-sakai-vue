@@ -1,0 +1,16 @@
+.l-lang-menu > div > ul {
+    border: none !important;
+    padding: 0;
+}
+
+.l-lang-menu {
+    border: none !important;
+}
+
+div.p-lang-menu.p-popover:before {
+    content: none !important;
+}
+
+div.p-lang-menu.p-popover:after {
+    content: none !important;
+}
