@@ -7,7 +7,7 @@
             projects. To get started, clone the <a class="font-medium text-primary hover:underline" href="https://github.com/primefaces/sakai-vue">repository</a> from GitHub and install the dependencies with npm or yarn.
         </p>
         <pre class="app-code">
-<code>git clone https://github.com/primefaces/sakai-vue
+<code>git clone https://github.com/jonaskahn/enhanced-sakai-vue
 npm install
 npm run dev</code></pre>
 
