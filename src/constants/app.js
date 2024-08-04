@@ -1,7 +1,8 @@
 const DEFAULTS = {
-    TOKEN: {
-        ACCESS: 'AppAccessToken',
-        EXPIRATION: 'AppExpirationToken'
+    ACCESS: {
+        TOKEN: 'AppAccessToken',
+        EXPIRATION: 'AppAccessExpiration',
+        PERMISSIONS: 'AppAccessPermissions'
     },
     TOAST_TIMEOUT: {
         ERROR: 3000,

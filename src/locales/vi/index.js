@@ -1,4 +1,5 @@
-import AppConfig from '@/locales/vi/appSettings';
+import AppConfig from '@/locales/vi/global/setting';
+import Menu from '@/locales/vi/global/menu';
 
 export default {
     'service.default-message.unknown-error': 'Đã có sự cố xảy ra. Vui lòng thử lại sau.',
@@ -8,5 +9,6 @@ export default {
     'service.default-message.response-status-404': 'Tài nguyên này không tồn tại.',
     'service.default-message.api-error-network': 'Kết nối mạng có vấn đề.',
     'service.default-message.api-error-client': 'Trình duyệt không thể tạo kết nối.',
-    ...AppConfig
+    ...AppConfig,
+    ...Menu
 };

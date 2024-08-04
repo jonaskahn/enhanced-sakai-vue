@@ -97,6 +97,6 @@ async function onRequestError(error) {
 
 const http = createInstance();
 const httpSecure = createInstance({
-    Authorization: `Bearer ${localStorage.getItem(DEFAULTS.TOKEN.ACCESS)}`
+    Authorization: `Bearer ${localStorage.getItem(DEFAULTS.ACCESS.TOKEN)}`
 });
 export { http, httpSecure };

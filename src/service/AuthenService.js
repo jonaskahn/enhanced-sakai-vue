@@ -9,10 +9,12 @@ export default class AuthService extends BaseService {
 
     async fakeLogin() {
         localStorage.setItem(
-            DEFAULTS.TOKEN.ACCESS,
+            DEFAULTS.ACCESS.ACCESS,
             'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTcyMjY4NTk3NiwiZXhwIjoxODIyNjg5NTc2fQ.Pv0TZ18vJbi9qNcDZR5A8RV0FtrJGMbQFHdHjEEGhD4'
         );
-        localStorage.setItem(DEFAULTS.TOKEN.EXPIRATION, '1822689576');
+        localStorage.setItem(DEFAULTS.ACCESS.EXPIRATION, '1822689576');
+        authStore.updateExpiration();
+        authStore.updatePermission();
         return true;
     }
 
@@ -36,10 +38,10 @@ export default class AuthService extends BaseService {
     }
 
     #updateAccessTokenInfo(data) {
-        localStorage.setItem(DEFAULTS.TOKEN.ACCESS, data);
+        localStorage.setItem(DEFAULTS.ACCESS.TOKEN, data);
 
         const token = JSON.parse(atob(data));
-        localStorage.setItem(DEFAULTS.TOKEN.EXPIRATION, token['exp']);
+        localStorage.setItem(DEFAULTS.ACCESS.EXPIRATION, token['exp']);
         authStore.updateExpiration();
         authStore.updatePermission();
     }

@@ -1,13 +1,14 @@
 import AppLayout from '@/layout/AppLayout.vue';
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import page from '@/router/page';
 import PageSpec from '@/router/page';
 import { nextTick } from 'vue';
 import { translate } from '@/locales';
 import useAuthStore from '@/store/authStore';
+import logger from '@/common/logger';
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes: [
         {
             path: '/',
@@ -45,7 +46,7 @@ const router = createRouter({
     ]
 });
 
-const whiteListUrl = [PageSpec.ACCESS.DENIED.name, PageSpec.ACCESS.NOT_FOUND.name, PageSpec.ACCESS.ERROR.name, PageSpec.AUTH.LOGIN.name];
+const whiteListUrl = [PageSpec.ACCESS.DENIED.name, PageSpec.ACCESS.NOT_FOUND.name, PageSpec.ACCESS.ERROR.name];
 
 router.beforeEach(async (to, from, next) => {
     if (whiteListUrl.includes(to.name)) {
@@ -59,13 +60,14 @@ router.beforeEach(async (to, from, next) => {
 
 function isAuthenticated() {
     const authStore = useAuthStore();
+    logger.debug(authStore.isAuthenticated);
     return authStore.isAuthenticated;
 }
 
 async function redirectIfInvalid(to, from, next) {
     if (to.path !== PageSpec.AUTH.LOGIN.path) {
-        await router.push({
-            path: PageSpec.AUTH.LOGIN.path
+        await next({
+            name: PageSpec.AUTH.LOGIN.name
         });
     } else {
         next();
@@ -74,11 +76,11 @@ async function redirectIfInvalid(to, from, next) {
 
 async function redirectIfValid(to, from, next) {
     if (to.name === PageSpec.AUTH.LOGIN.name) {
-        await router.push(PageSpec.APP.DASHBOARD.path);
+        await next({ name: PageSpec.APP.DASHBOARD.name });
     } else if (hasPermission(to.meta.permissions ?? [])) {
         next();
     } else {
-        await router.push(PageSpec.ACCESS.DENIED.path);
+        await next({ name: PageSpec.ACCESS.DENIED.name });
     }
 }
 
@@ -96,7 +98,7 @@ function containsAny(arr1, arr2) {
 router.afterEach(async (to) => {
     await nextTick(() => {
         const pageTitle = translate(to.meta.title ?? to.name.toUpperCase() + '');
-        document.title = translate('global.menu-title.default') + ' - ' + pageTitle;
+        document.title = translate('page.menu-title.default') + ' - ' + pageTitle;
     });
 });
 

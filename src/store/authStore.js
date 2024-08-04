@@ -13,14 +13,15 @@ const useAuthStore = defineStore('authStore', () => {
     const getPermissions = computed(() => permissions);
 
     function updateExpiration() {
-        const time = Number(localStorage.getItem(DEFAULTS.TOKEN.EXPIRATION));
+        const time = Number(localStorage.getItem(DEFAULTS.ACCESS.EXPIRATION));
         if (!isNaN(time)) {
             expiration.value = time;
         }
     }
 
-    function updatePermission(value) {
-        permissions.value = value;
+    function updatePermission() {
+        const permissionRawData = localStorage.getItem(DEFAULTS.ACCESS.PERMISSIONS) ?? '[]';
+        permissions.value = JSON.parse(permissionRawData);
     }
 
     return { isAuthenticated, updateExpiration, getPermissions, updatePermission };

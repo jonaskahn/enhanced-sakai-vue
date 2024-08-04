@@ -3,25 +3,28 @@ import FloatingConfigurator from '@/components/FloatingConfigurator.vue';
 import { inject, ref } from 'vue';
 import AuthService from '@/service/AuthenService';
 import SETTINGS from '@/constants/settings';
-import router from '@/router';
 import PageSpec from '@/router/page';
+import { useRouter } from 'vue-router';
 
 const email = ref('');
 const password = ref('');
 const checked = ref(false);
 
+const router = useRouter();
+
 const $loading = inject('$loading');
 const login = async () => {
     const loader = $loading.show(SETTINGS.LOADING_PROPERTIES);
+    let result = false;
     try {
-        const result = await AuthService.INSTANCE.fakeLogin();
+        result = await AuthService.INSTANCE.fakeLogin();
         if (result) {
             await router.push({
                 name: PageSpec.APP.DASHBOARD.name
             });
         }
     } finally {
-        setTimeout(() => loader.hide(), 250);
+        setTimeout(() => loader.hide(), 500);
     }
 };
 </script>

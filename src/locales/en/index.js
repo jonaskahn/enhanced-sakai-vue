@@ -1,4 +1,5 @@
-import AppConfig from '@/locales/en/appSetting';
+import AppConfig from '@/locales/en/global/setting';
+import Menu from '@/locales/en/global/menu';
 
 export default {
     'service.default-message.unknown-error': 'There is something wrong, please comeback and try later.',
@@ -8,5 +9,6 @@ export default {
     'service.default-message.response-status-404': 'This resource does not exist.',
     'service.default-message.api-error-network': 'Internet connection is in trouble.',
     'service.default-message.api-error-client': 'Browser could not make request.',
-    ...AppConfig
+    ...AppConfig,
+    ...Menu
 };
