@@ -131,7 +131,7 @@ const model = ref([
             {
                 label: 'View Source',
                 icon: 'pi pi-fw pi-github',
-                url: 'https://github.com/primefaces/sakai-vue',
+                url: 'https://github.com/jonaskahn/enhanced-sakai-vue',
                 target: '_blank'
             }
         ]
