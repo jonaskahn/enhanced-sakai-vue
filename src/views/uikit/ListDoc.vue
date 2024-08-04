@@ -37,10 +37,10 @@ const getSeverity = (product) => {
     <div class="flex flex-col">
         <div class="card">
             <div class="font-semibold text-xl">DataView</div>
-            <DataView :value="products" :layout="layout">
+            <DataView :layout="layout" :value="products">
                 <template #header>
                     <div class="flex justify-end">
-                        <SelectButton v-model="layout" :options="options" :allowEmpty="false">
+                        <SelectButton v-model="layout" :allowEmpty="false" :options="options">
                             <template #option="{ option }">
                                 <i :class="[option === 'list' ? 'pi pi-bars' : 'pi pi-table']" />
                             </template>
@@ -51,10 +51,10 @@ const getSeverity = (product) => {
                 <template #list="slotProps">
                     <div class="flex flex-col">
                         <div v-for="(item, index) in slotProps.items" :key="index">
-                            <div class="flex flex-col sm:flex-row sm:items-center p-6 gap-4" :class="{ 'border-t border-surface': index !== 0 }">
+                            <div :class="{ 'border-t border-surface': index !== 0 }" class="flex flex-col sm:flex-row sm:items-center p-6 gap-4">
                                 <div class="md:w-40 relative">
-                                    <img class="block xl:block mx-auto rounded w-full" :src="`https://primefaces.org/cdn/primevue/images/product/${item.image}`" :alt="item.name" />
-                                    <Tag :value="item.inventoryStatus" :severity="getSeverity(item)" class="absolute dark:!bg-surface-900" style="left: 4px; top: 4px"></Tag>
+                                    <img :alt="item.name" :src="`https://primefaces.org/cdn/primevue/images/product/${item.image}`" class="block xl:block mx-auto rounded w-full" />
+                                    <Tag :severity="getSeverity(item)" :value="item.inventoryStatus" class="absolute dark:!bg-surface-900" style="left: 4px; top: 4px"></Tag>
                                 </div>
                                 <div class="flex flex-col md:flex-row justify-between md:items-center flex-1 gap-6">
                                     <div class="flex flex-row md:flex-col justify-between items-start gap-2">
@@ -81,7 +81,7 @@ const getSeverity = (product) => {
                                         <span class="text-xl font-semibold">${{ item.price }}</span>
                                         <div class="flex flex-row-reverse md:flex-row gap-2">
                                             <Button icon="pi pi-heart" outlined></Button>
-                                            <Button icon="pi pi-shopping-cart" label="Buy Now" :disabled="item.inventoryStatus === 'OUTOFSTOCK'" class="flex-auto md:flex-initial whitespace-nowrap"></Button>
+                                            <Button :disabled="item.inventoryStatus === 'OUTOFSTOCK'" class="flex-auto md:flex-initial whitespace-nowrap" icon="pi pi-shopping-cart" label="Buy Now"></Button>
                                         </div>
                                     </div>
                                 </div>
@@ -96,8 +96,8 @@ const getSeverity = (product) => {
                             <div class="p-6 border border-surface-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-900 rounded flex flex-col">
                                 <div class="bg-surface-50 flex justify-center rounded p-4">
                                     <div class="relative mx-auto">
-                                        <img class="rounded w-full" :src="`https://primefaces.org/cdn/primevue/images/product/${item.image}`" :alt="item.name" style="max-width: 300px" />
-                                        <Tag :value="item.inventoryStatus" :severity="getSeverity(item)" class="absolute dark:!bg-surface-900" style="left: 4px; top: 4px"></Tag>
+                                        <img :alt="item.name" :src="`https://primefaces.org/cdn/primevue/images/product/${item.image}`" class="rounded w-full" style="max-width: 300px" />
+                                        <Tag :severity="getSeverity(item)" :value="item.inventoryStatus" class="absolute dark:!bg-surface-900" style="left: 4px; top: 4px"></Tag>
                                     </div>
                                 </div>
                                 <div class="pt-6">
@@ -124,7 +124,7 @@ const getSeverity = (product) => {
                                     <div class="flex flex-col gap-6 mt-6">
                                         <span class="text-2xl font-semibold">${{ item.price }}</span>
                                         <div class="flex gap-2">
-                                            <Button icon="pi pi-shopping-cart" label="Buy Now" :disabled="item.inventoryStatus === 'OUTOFSTOCK'" class="flex-auto whitespace-nowrap"></Button>
+                                            <Button :disabled="item.inventoryStatus === 'OUTOFSTOCK'" class="flex-auto whitespace-nowrap" icon="pi pi-shopping-cart" label="Buy Now"></Button>
                                             <Button icon="pi pi-heart" outlined></Button>
                                         </div>
                                     </div>

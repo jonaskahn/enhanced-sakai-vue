@@ -81,7 +81,7 @@ const confirm = (event) => {
         <div class="md:w-1/2">
             <div class="card">
                 <div class="font-semibold text-xl mb-4">Dialog</div>
-                <Dialog header="Dialog" v-model:visible="display" :breakpoints="{ '960px': '75vw' }" :style="{ width: '30vw' }" :modal="true">
+                <Dialog v-model:visible="display" :breakpoints="{ '960px': '75vw' }" :modal="true" :style="{ width: '30vw' }" header="Dialog">
                     <p class="leading-normal m-0">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -96,17 +96,17 @@ const confirm = (event) => {
             <div class="card">
                 <div class="font-semibold text-xl mb-4">Popover</div>
                 <div class="flex flex-wrap gap-2">
-                    <Button type="button" label="Show" @click="toggleDataTable" />
-                    <Popover ref="op2" id="overlay_panel" style="width: 450px">
-                        <DataTable v-model:selection="selectedProduct" :value="products" selectionMode="single" :paginator="true" :rows="5" @row-select="onProductSelect">
+                    <Button label="Show" type="button" @click="toggleDataTable" />
+                    <Popover id="overlay_panel" ref="op2" style="width: 450px">
+                        <DataTable v-model:selection="selectedProduct" :paginator="true" :rows="5" :value="products" selectionMode="single" @row-select="onProductSelect">
                             <Column field="name" header="Name" sortable style="min-width: 12rem"></Column>
                             <Column header="Image">
                                 <template #body="slotProps">
-                                    <img :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" :alt="slotProps.data.image" class="w-16 shadow-sm" />
+                                    <img :alt="slotProps.data.image" :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" class="w-16 shadow-sm" />
                                 </template>
                             </Column>
                             <Column field="price" header="Price" sortable style="min-width: 8rem">
-                                <template #body="slotProps"> $ {{ slotProps.data.price }} </template>
+                                <template #body="slotProps"> $ {{ slotProps.data.price }}</template>
                             </Column>
                         </DataTable>
                     </Popover>
@@ -116,8 +116,8 @@ const confirm = (event) => {
             <div class="card">
                 <div class="font-semibold text-xl mb-4">Tooltip</div>
                 <div class="inline-flex gap-4">
-                    <InputText type="text" placeholder="Username" v-tooltip="'Your username'" />
-                    <Button type="button" label="Save" v-tooltip="'Click to proceed'" />
+                    <InputText v-tooltip="'Your username'" placeholder="Username" type="text" />
+                    <Button v-tooltip="'Click to proceed'" label="Save" type="button" />
                 </div>
             </div>
         </div>
@@ -159,30 +159,30 @@ const confirm = (event) => {
                     </p>
                 </Drawer>
 
-                <Button icon="pi pi-arrow-right" @click="visibleLeft = true" style="margin-right: 0.25em" />
-                <Button icon="pi pi-arrow-left" @click="visibleRight = true" style="margin-right: 0.25em" />
-                <Button icon="pi pi-arrow-down" @click="visibleTop = true" style="margin-right: 0.25em" />
-                <Button icon="pi pi-arrow-up" @click="visibleBottom = true" style="margin-right: 0.25em" />
+                <Button icon="pi pi-arrow-right" style="margin-right: 0.25em" @click="visibleLeft = true" />
+                <Button icon="pi pi-arrow-left" style="margin-right: 0.25em" @click="visibleRight = true" />
+                <Button icon="pi pi-arrow-down" style="margin-right: 0.25em" @click="visibleTop = true" />
+                <Button icon="pi pi-arrow-up" style="margin-right: 0.25em" @click="visibleBottom = true" />
                 <Button icon="pi pi-external-link" @click="visibleFull = true" />
             </div>
 
             <div class="card">
                 <div class="font-semibold text-xl mb-4">ConfirmPopup</div>
                 <ConfirmPopup></ConfirmPopup>
-                <Button ref="popup" @click="confirm($event)" icon="pi pi-check" label="Confirm" class="mr-2"></Button>
+                <Button ref="popup" class="mr-2" icon="pi pi-check" label="Confirm" @click="confirm($event)"></Button>
             </div>
 
             <div class="card">
                 <div class="font-semibold text-xl mb-4">ConfirmDialog</div>
-                <Button label="Delete" icon="pi pi-trash" severity="danger" style="width: auto" @click="openConfirmation" />
-                <Dialog header="Confirmation" v-model:visible="displayConfirmation" :style="{ width: '350px' }" :modal="true">
+                <Button icon="pi pi-trash" label="Delete" severity="danger" style="width: auto" @click="openConfirmation" />
+                <Dialog v-model:visible="displayConfirmation" :modal="true" :style="{ width: '350px' }" header="Confirmation">
                     <div class="flex items-center justify-center">
                         <i class="pi pi-exclamation-triangle mr-4" style="font-size: 2rem" />
                         <span>Are you sure you want to proceed?</span>
                     </div>
                     <template #footer>
-                        <Button label="No" icon="pi pi-times" @click="closeConfirmation" text severity="secondary" />
-                        <Button label="Yes" icon="pi pi-check" @click="closeConfirmation" severity="danger" outlined autofocus />
+                        <Button icon="pi pi-times" label="No" severity="secondary" text @click="closeConfirmation" />
+                        <Button autofocus icon="pi pi-check" label="Yes" outlined severity="danger" @click="closeConfirmation" />
                     </template>
                 </Dialog>
             </div>

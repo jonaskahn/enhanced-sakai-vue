@@ -14,9 +14,9 @@ import FloatingConfigurator from '@/components/FloatingConfigurator.vue';
                         </div>
                         <h1 class="text-surface-900 dark:text-surface-0 font-bold text-5xl mb-2">Error Occured</h1>
                         <span class="text-muted-color mb-8">Requested resource is not available.</span>
-                        <img src="/demo/images/error/asset-error.svg" alt="Error" class="mb-8" width="80%" />
+                        <img alt="Error" class="mb-8" src="/demo/images/error/asset-error.svg" width="80%" />
                         <div class="col-span-12 mt-8 text-center">
-                            <Button as="router-link" label="Go to Dashboard" to="/" severity="danger" />
+                            <Button as="router-link" label="Go to Dashboard" severity="danger" to="/" />
                         </div>
                     </div>
                 </div>

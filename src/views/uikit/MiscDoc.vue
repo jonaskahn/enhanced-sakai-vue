@@ -35,7 +35,7 @@ onBeforeUnmount(() => {
                 <ProgressBar :value="value"></ProgressBar>
             </div>
             <div class="md:w-1/2">
-                <ProgressBar :value="50" :showValue="false"></ProgressBar>
+                <ProgressBar :showValue="false" :value="50"></ProgressBar>
             </div>
         </div>
     </div>
@@ -57,7 +57,7 @@ onBeforeUnmount(() => {
                     <OverlayBadge value="2">
                         <i class="pi pi-bell" style="font-size: 2rem" />
                     </OverlayBadge>
-                    <OverlayBadge value="4" severity="danger">
+                    <OverlayBadge severity="danger" value="4">
                         <i class="pi pi-calendar" style="font-size: 2rem" />
                     </OverlayBadge>
                     <OverlayBadge severity="danger">
@@ -67,15 +67,15 @@ onBeforeUnmount(() => {
 
                 <div class="font-semibold my-4">Button</div>
                 <div class="flex gap-2">
-                    <Button label="Emails" badge="8" class="mr-2"></Button>
-                    <Button label="Messages" icon="pi pi-users" severity="warn" badge="8" badgeClass="p-badge-danger"></Button>
+                    <Button badge="8" class="mr-2" label="Emails"></Button>
+                    <Button badge="8" badgeClass="p-badge-danger" icon="pi pi-users" label="Messages" severity="warn"></Button>
                 </div>
 
                 <div class="font-semibold my-4">Sizes</div>
                 <div class="flex items-start gap-2">
                     <Badge :value="2"></Badge>
-                    <Badge :value="4" size="large" severity="warn"></Badge>
-                    <Badge :value="6" size="xlarge" severity="success"></Badge>
+                    <Badge :value="4" severity="warn" size="large"></Badge>
+                    <Badge :value="6" severity="success" size="xlarge"></Badge>
                 </div>
             </div>
 
@@ -83,21 +83,21 @@ onBeforeUnmount(() => {
                 <div class="font-semibold text-xl mb-4">Avatar</div>
                 <div class="font-semibold mb-4">Group</div>
                 <AvatarGroup>
-                    <Avatar :image="'/demo/images/avatar/amyelsner.png'" size="large" shape="circle"></Avatar>
-                    <Avatar :image="'/demo/images/avatar/asiyajavayant.png'" size="large" shape="circle"></Avatar>
-                    <Avatar :image="'/demo/images/avatar/onyamalimba.png'" size="large" shape="circle"></Avatar>
-                    <Avatar :image="'/demo/images/avatar/ionibowcher.png'" size="large" shape="circle"></Avatar>
-                    <Avatar :image="'/demo/images/avatar/xuxuefeng.png'" size="large" shape="circle"></Avatar>
-                    <Avatar label="+2" shape="circle" size="large" :style="{ 'background-color': '#9c27b0', color: '#ffffff' }"></Avatar>
+                    <Avatar :image="'/demo/images/avatar/amyelsner.png'" shape="circle" size="large"></Avatar>
+                    <Avatar :image="'/demo/images/avatar/asiyajavayant.png'" shape="circle" size="large"></Avatar>
+                    <Avatar :image="'/demo/images/avatar/onyamalimba.png'" shape="circle" size="large"></Avatar>
+                    <Avatar :image="'/demo/images/avatar/ionibowcher.png'" shape="circle" size="large"></Avatar>
+                    <Avatar :image="'/demo/images/avatar/xuxuefeng.png'" shape="circle" size="large"></Avatar>
+                    <Avatar :style="{ 'background-color': '#9c27b0', color: '#ffffff' }" label="+2" shape="circle" size="large"></Avatar>
                 </AvatarGroup>
 
                 <div class="font-semibold my-4">Label - Circle</div>
-                <Avatar label="P" class="mr-2" size="xlarge" shape="circle"></Avatar>
-                <Avatar label="V" class="mr-2" size="large" :style="{ 'background-color': '#2196F3', color: '#ffffff' }" shape="circle"></Avatar>
-                <Avatar label="U" class="mr-2" :style="{ 'background-color': '#9c27b0', color: '#ffffff' }" shape="circle"></Avatar>
+                <Avatar class="mr-2" label="P" shape="circle" size="xlarge"></Avatar>
+                <Avatar :style="{ 'background-color': '#2196F3', color: '#ffffff' }" class="mr-2" label="V" shape="circle" size="large"></Avatar>
+                <Avatar :style="{ 'background-color': '#9c27b0', color: '#ffffff' }" class="mr-2" label="U" shape="circle"></Avatar>
 
                 <div class="font-semibold my-4">Icon - Badge</div>
-                <OverlayBadge value="4" severity="danger" class="inline-flex">
+                <OverlayBadge class="inline-flex" severity="danger" value="4">
                     <Avatar label="U" size="xlarge" />
                 </OverlayBadge>
             </div>
@@ -112,7 +112,7 @@ onBeforeUnmount(() => {
                         nisl purus. Cursus sit amet dictum sit amet. Tristique senectus et netus et malesuada fames ac turpis egestas. Et tortor consequat id porta nibh venenatis cras sed. Diam maecenas ultricies mi eget mauris. Eget egestas purus
                         viverra accumsan in nisl nisi. Suscipit adipiscing bibendum est ultricies integer. Mattis aliquam faucibus purus in massa tempor nec.
                     </p>
-                    <ScrollTop target="parent" :threshold="100" icon="pi pi-arrow-up"></ScrollTop>
+                    <ScrollTop :threshold="100" icon="pi pi-arrow-up" target="parent"></ScrollTop>
                 </ScrollPanel>
             </div>
         </div>
@@ -130,11 +130,11 @@ onBeforeUnmount(() => {
 
                 <div class="font-semibold my-4">Pills</div>
                 <div class="flex gap-2">
-                    <Tag value="Primary" :rounded="true"></Tag>
-                    <Tag severity="success" value="Success" :rounded="true"></Tag>
-                    <Tag severity="info" value="Info" :rounded="true"></Tag>
-                    <Tag severity="warn" value="Warn" :rounded="true"></Tag>
-                    <Tag severity="danger" value="Danger" :rounded="true"></Tag>
+                    <Tag :rounded="true" value="Primary"></Tag>
+                    <Tag :rounded="true" severity="success" value="Success"></Tag>
+                    <Tag :rounded="true" severity="info" value="Info"></Tag>
+                    <Tag :rounded="true" severity="warn" value="Warn"></Tag>
+                    <Tag :rounded="true" severity="danger" value="Danger"></Tag>
                 </div>
 
                 <div class="font-semibold my-4">Icons</div>
@@ -151,25 +151,25 @@ onBeforeUnmount(() => {
                 <div class="font-semibold text-xl mb-4">Chip</div>
                 <div class="font-semibold mb-4">Basic</div>
                 <div class="flex items-center flex-col sm:flex-row">
-                    <Chip label="Action" class="mr-2 mb-2"></Chip>
-                    <Chip label="Comedy" class="mr-2 mb-2"></Chip>
-                    <Chip label="Mystery" class="mr-2 mb-2"></Chip>
-                    <Chip label="Thriller" :removable="true" class="mb-2"></Chip>
+                    <Chip class="mr-2 mb-2" label="Action"></Chip>
+                    <Chip class="mr-2 mb-2" label="Comedy"></Chip>
+                    <Chip class="mr-2 mb-2" label="Mystery"></Chip>
+                    <Chip :removable="true" class="mb-2" label="Thriller"></Chip>
                 </div>
 
                 <div class="font-semibold my-4">Icon</div>
                 <div class="flex items-center flex-col sm:flex-row">
-                    <Chip label="Apple" icon="pi pi-apple" class="mr-2 mb-2"></Chip>
-                    <Chip label="Facebook" icon="pi pi-facebook" class="mr-2 mb-2"></Chip>
-                    <Chip label="Google" icon="pi pi-google" class="mr-2 mb-2"></Chip>
-                    <Chip label="Microsoft" icon="pi pi-microsoft" :removable="true" class="mb-2"></Chip>
+                    <Chip class="mr-2 mb-2" icon="pi pi-apple" label="Apple"></Chip>
+                    <Chip class="mr-2 mb-2" icon="pi pi-facebook" label="Facebook"></Chip>
+                    <Chip class="mr-2 mb-2" icon="pi pi-google" label="Google"></Chip>
+                    <Chip :removable="true" class="mb-2" icon="pi pi-microsoft" label="Microsoft"></Chip>
                 </div>
 
                 <div class="font-semibold my-4">Image</div>
                 <div class="flex items-center flex-col sm:flex-row">
-                    <Chip label="Amy Elsner" :image="'/demo/images/avatar/amyelsner.png'" class="mr-2 mb-2"></Chip>
-                    <Chip label="Asiya Javayant" :image="'/demo/images/avatar/asiyajavayant.png'" class="mr-2 mb-2"></Chip>
-                    <Chip label="Onyama Limba" :image="'/demo/images/avatar/onyamalimba.png'" class="mr-2 mb-2"></Chip>
+                    <Chip :image="'/demo/images/avatar/amyelsner.png'" class="mr-2 mb-2" label="Amy Elsner"></Chip>
+                    <Chip :image="'/demo/images/avatar/asiyajavayant.png'" class="mr-2 mb-2" label="Asiya Javayant"></Chip>
+                    <Chip :image="'/demo/images/avatar/onyamalimba.png'" class="mr-2 mb-2" label="Onyama Limba"></Chip>
                 </div>
             </div>
 
@@ -177,17 +177,17 @@ onBeforeUnmount(() => {
                 <div class="font-semibold text-xl mb-4">Skeleton</div>
                 <div class="rounded-border border border-surface p-6">
                     <div class="flex mb-4">
-                        <Skeleton shape="circle" size="4rem" class="mr-2"></Skeleton>
+                        <Skeleton class="mr-2" shape="circle" size="4rem"></Skeleton>
                         <div>
-                            <Skeleton width="10rem" class="mb-2"></Skeleton>
-                            <Skeleton width="5rem" class="mb-2"></Skeleton>
+                            <Skeleton class="mb-2" width="10rem"></Skeleton>
+                            <Skeleton class="mb-2" width="5rem"></Skeleton>
                             <Skeleton height=".5rem"></Skeleton>
                         </div>
                     </div>
-                    <Skeleton width="100%" height="150px"></Skeleton>
+                    <Skeleton height="150px" width="100%"></Skeleton>
                     <div class="flex justify-between mt-4">
-                        <Skeleton width="4rem" height="2rem"></Skeleton>
-                        <Skeleton width="4rem" height="2rem"></Skeleton>
+                        <Skeleton height="2rem" width="4rem"></Skeleton>
+                        <Skeleton height="2rem" width="4rem"></Skeleton>
                     </div>
                 </div>
             </div>

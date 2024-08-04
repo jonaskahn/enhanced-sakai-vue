@@ -166,21 +166,21 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
         <div class="col-span-12 xl:col-span-6">
             <div class="card">
                 <div class="font-semibold text-xl mb-4">Recent Sales</div>
-                <DataTable :value="products" :rows="5" :paginator="true" responsiveLayout="scroll">
-                    <Column style="width: 15%" header="Image">
+                <DataTable :paginator="true" :rows="5" :value="products" responsiveLayout="scroll">
+                    <Column header="Image" style="width: 15%">
                         <template #body="slotProps">
-                            <img :src="'demo/images/product/' + slotProps.data.image" :alt="slotProps.data.image" width="50" class="shadow" />
+                            <img :alt="slotProps.data.image" :src="'demo/images/product/' + slotProps.data.image" class="shadow" width="50" />
                         </template>
                     </Column>
-                    <Column field="name" header="Name" :sortable="true" style="width: 35%"></Column>
-                    <Column field="price" header="Price" :sortable="true" style="width: 35%">
+                    <Column :sortable="true" field="name" header="Name" style="width: 35%"></Column>
+                    <Column :sortable="true" field="price" header="Price" style="width: 35%">
                         <template #body="slotProps">
                             {{ formatCurrency(slotProps.data.price) }}
                         </template>
                     </Column>
-                    <Column style="width: 15%" header="View">
+                    <Column header="View" style="width: 15%">
                         <template #body>
-                            <Button icon="pi pi-search" type="button" class="p-button-text"></Button>
+                            <Button class="p-button-text" icon="pi pi-search" type="button"></Button>
                         </template>
                     </Column>
                 </DataTable>
@@ -189,8 +189,8 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
                 <div class="flex justify-between items-center mb-6">
                     <div class="font-semibold text-xl">Best Selling Products</div>
                     <div>
-                        <Button icon="pi pi-ellipsis-v" class="p-button-text p-button-plain p-button-rounded" @click="$refs.menu2.toggle($event)"></Button>
-                        <Menu ref="menu2" :popup="true" :model="items" class="!min-w-40"></Menu>
+                        <Button class="p-button-text p-button-plain p-button-rounded" icon="pi pi-ellipsis-v" @click="$refs.menu2.toggle($event)"></Button>
+                        <Menu ref="menu2" :model="items" :popup="true" class="!min-w-40"></Menu>
                     </div>
                 </div>
                 <ul class="list-none p-0 m-0">
@@ -272,14 +272,14 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
         <div class="col-span-12 xl:col-span-6">
             <div class="card">
                 <div class="font-semibold text-xl mb-4">Revenue Stream</div>
-                <Chart type="bar" :data="chartData" :options="chartOptions" class="h-80" />
+                <Chart :data="chartData" :options="chartOptions" class="h-80" type="bar" />
             </div>
             <div class="card">
                 <div class="flex items-center justify-between mb-6">
                     <div class="font-semibold text-xl">Notifications</div>
                     <div>
-                        <Button icon="pi pi-ellipsis-v" class="p-button-text p-button-plain p-button-rounded" @click="$refs.menu1.toggle($event)"></Button>
-                        <Menu ref="menu1" :popup="true" :model="items" class="!min-w-40"></Menu>
+                        <Button class="p-button-text p-button-plain p-button-rounded" icon="pi pi-ellipsis-v" @click="$refs.menu1.toggle($event)"></Button>
+                        <Menu ref="menu1" :model="items" :popup="true" class="!min-w-40"></Menu>
                     </div>
                 </div>
 
