@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onBeforeMount } from 'vue';
 import { SettingService } from '@/service/SettingService';
 import { useThemeSetting } from '@/layout/composables/theme';
 import { updatePreset, updateSurfacePalette } from '@primevue/themes';
@@ -23,7 +23,7 @@ const initialSurface = () => {
 
 const { updateExpiration } = useAuthStore();
 
-onMounted(() => {
+onBeforeMount(() => {
     initialPreset();
     initialSurface();
     switchOnDarkMode();
