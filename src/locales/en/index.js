@@ -9,6 +9,10 @@ export default {
     'service.default-message.response-status-404': 'This resource does not exist.',
     'service.default-message.api-error-network': 'Internet connection is in trouble.',
     'service.default-message.api-error-client': 'Browser could not make request.',
+    'global.notification.default-title.error': 'Failure',
+    'global.notification.default-title.warn': 'Warning',
+    'global.notification.default-title.info': 'Info',
+    'global.notification.default-title.success': 'Success',
     ...AppConfig,
     ...Menu
 };

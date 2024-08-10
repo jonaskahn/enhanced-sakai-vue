@@ -17,7 +17,10 @@ const login = async () => {
     const loader = $loading.show(SETTINGS.LOADING_PROPERTIES);
     let result = false;
     try {
-        result = await AuthService.INSTANCE.fakeLogin();
+        result = await AuthService.INSTANCE.fakeLogin({
+            email: email.value,
+            password: password.value
+        });
         if (result) {
             await router.push({
                 name: PageSpec.APP.DASHBOARD.name

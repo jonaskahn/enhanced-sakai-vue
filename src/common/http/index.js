@@ -16,15 +16,21 @@ export const ResponseType = {
 
 export class ResponseData {
     #status;
+    #message;
     #payload;
 
-    constructor(status, payload) {
-        this.#status = status;
-        this.#payload = payload;
+    constructor(data = { status: String, message: String, payload: String }) {
+        this.#status = data.status;
+        this.#message = data.message;
+        this.#payload = data.payload;
     }
 
     get status() {
         return this.#status;
+    }
+
+    get message() {
+        return this.#message;
     }
 
     get payload() {
@@ -42,7 +48,13 @@ function createInstance(headers = {}) {
     });
     instance.interceptors.response.use(
         function (response) {
-            return Promise.resolve(new ResponseData(ResponseType.SUCCESS, response.data.payload));
+            return Promise.resolve(
+                new ResponseData({
+                    status: ResponseType.SUCCESS,
+                    message: response.data.message,
+                    payload: response.data.payload
+                })
+            );
         },
         function (error) {
             logger.error(error);
@@ -51,7 +63,11 @@ function createInstance(headers = {}) {
             } else if (error.request) {
                 return onRequestError(error);
             } else {
-                return Promise.resolve(new ResponseData(ResponseType.UNDEFINED));
+                return Promise.resolve(
+                    new ResponseData({
+                        status: ResponseType.UNDEFINED
+                    })
+                );
             }
         }
     );
@@ -62,36 +78,79 @@ function createInstance(headers = {}) {
  * JSON response:
  * - Success: {
  *     status: 200,
+ *     message: string
  *     payload: object
  * }
  * - Error: {
  *     status: 4xx || 5xx,
- *     payload: string message
+ *     message: string message,
+ *     payload: object || null
  * }
  * @param res
  * @returns {Promise<Awaited<ResponseData>>}
  */
 async function onResponseError(res) {
-    res.data.payload;
+    const message = res.data.message;
+    const payload = res.data.payload;
     switch (res.status) {
         case 400:
-            return Promise.resolve(new ResponseData(ResponseType.BAD_REQUEST, res.data.payload ?? translate('service.default-message.response-status-400')));
+            return Promise.resolve(
+                new ResponseData({
+                    status: ResponseType.BAD_REQUEST,
+                    message: message ?? translate('service.default-message.response-status-400'),
+                    payload: payload
+                })
+            );
         case 401:
-            return Promise.resolve(new ResponseData(ResponseType.UNAUTHORIZED, res.data.payload ?? translate('service.default-message.response-status-401')));
+            return Promise.resolve(
+                new ResponseData({
+                    status: ResponseType.UNAUTHORIZED,
+                    message: message ?? translate('service.default-message.response-status-401'),
+                    payload: payload
+                })
+            );
         case 403:
-            return Promise.resolve(new ResponseData(ResponseType.ACCESS_DENIED, res.data.payload ?? translate('service.default-message.response-status-403')));
+            return Promise.resolve(
+                new ResponseData({
+                    status: ResponseType.ACCESS_DENIED,
+                    message: message ?? translate('service.default-message.response-status-403'),
+                    payload: payload
+                })
+            );
         case 404:
-            return Promise.resolve(new ResponseData(ResponseType.NOT_FOUND, res.data.payload ?? translate('service.default-message.response-status-403')));
+            return Promise.resolve(
+                new ResponseData({
+                    status: ResponseType.NOT_FOUND,
+                    message: message ?? translate('service.default-message.response-status-404'),
+                    payload: payload
+                })
+            );
         default:
-            return Promise.resolve(new ResponseData(ResponseType.UNDEFINED, translate('service.default-message.unknown-error')));
+            return Promise.resolve(
+                new ResponseData({
+                    status: ResponseType.CLIENT_ERROR,
+                    message: message ?? translate('service.default-message.unknown-error'),
+                    payload: payload
+                })
+            );
     }
 }
 
 async function onRequestError(error) {
     if (error.message === 'Network Error') {
-        return Promise.resolve(new ResponseData(ResponseType.NETWORK_ERROR, translate('service.default-message.api-error-network')));
+        return Promise.resolve(
+            new ResponseData({
+                status: ResponseType.NETWORK_ERROR,
+                message: translate('service.default-message.api-error-network')
+            })
+        );
     } else {
-        return Promise.resolve(new ResponseData(ResponseType.NETWORK_ERROR, translate('service.default-message.api-error-client')));
+        return Promise.resolve(
+            new ResponseData({
+                status: ResponseType.UNDEFINED,
+                message: translate('service.default-message.api-error-client')
+            })
+        );
     }
 }
 

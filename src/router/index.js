@@ -1,5 +1,5 @@
 import AppLayout from '@/layout/AppLayout.vue';
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import page from '@/router/page';
 import PageSpec from '@/router/page';
 import { nextTick } from 'vue';
@@ -8,7 +8,7 @@ import useAuthStore from '@/store/authStore';
 import logger from '@/common/logger';
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes: [
         {
             path: '/',

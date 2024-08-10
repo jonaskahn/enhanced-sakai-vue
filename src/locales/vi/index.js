@@ -9,6 +9,10 @@ export default {
     'service.default-message.response-status-404': 'Tài nguyên này không tồn tại.',
     'service.default-message.api-error-network': 'Kết nối mạng có vấn đề.',
     'service.default-message.api-error-client': 'Trình duyệt không thể tạo kết nối.',
+    'global.notification.default-title.error': 'Không thành công',
+    'global.notification.default-title.warn': 'Cảnh báo',
+    'global.notification.default-title.info': 'Thông tin',
+    'global.notification.default-title.success': 'Thành công',
     ...AppConfig,
     ...Menu
 };

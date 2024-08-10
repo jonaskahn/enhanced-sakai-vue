@@ -1,5 +1,11 @@
 <script setup>
 import FloatingConfigurator from '@/components/FloatingConfigurator.vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const goBack = () => {
+    router.go(-1);
+};
 </script>
 
 <template>
@@ -16,7 +22,7 @@ import FloatingConfigurator from '@/components/FloatingConfigurator.vue';
                         <span class="text-muted-color mb-8">Requested resource is not available.</span>
                         <img alt="Error" class="mb-8" src="/demo/images/error/asset-error.svg" width="80%" />
                         <div class="col-span-12 mt-8 text-center">
-                            <Button as="router-link" label="Go to Dashboard" severity="danger" to="/" />
+                            <Button label="Go to Dashboard" severity="danger" @click="goBack" />
                         </div>
                     </div>
                 </div>
