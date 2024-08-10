@@ -169,7 +169,7 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
                 <DataTable :paginator="true" :rows="5" :value="products" responsiveLayout="scroll">
                     <Column header="Image" style="width: 15%">
                         <template #body="slotProps">
-                            <img :alt="slotProps.data.image" :src="'demo/images/product/' + slotProps.data.image" class="shadow" width="50" />
+                            <img :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" :alt="slotProps.data.image" width="50" class="shadow" />
                         </template>
                     </Column>
                     <Column :sortable="true" field="name" header="Name" style="width: 35%"></Column>
