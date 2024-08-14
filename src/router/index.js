@@ -34,7 +34,6 @@ const router = createRouter({
 
                 page.APP.DOCUMENT,
                 page.APP.EMPTY,
-                page.APP.DOCUMENT,
                 page.APP.CRUD
             ]
         },
