@@ -106,7 +106,7 @@ export default class BaseService {
         }
     ) {
         const res = await httpSecure.request({
-            path: spec.path,
+            url: spec.path,
             method: spec.method,
             data: spec.data
         });
