@@ -1,8 +1,9 @@
 import NotificationService from '@/service/NotificationService';
-import { http, httpSecure, ResponseType } from '@/common/http';
+import { http, ResponseType } from '@/common/http';
 import router from '@/router';
 import PageSpec from '@/router/page';
 import logger from '@/common/logger';
+import DEFAULTS from '@/constants/app';
 
 export default class BaseService {
     static #showMessage(res, notifySuccess, notifyError) {
@@ -105,10 +106,13 @@ export default class BaseService {
             redirectOnError: false
         }
     ) {
-        const res = await httpSecure.request({
+        const res = await http.request({
             url: spec.path,
             method: spec.method,
-            data: spec.data
+            data: spec.data,
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem(DEFAULTS.ACCESS.TOKEN)}`
+            }
         });
 
         return BaseService.#handleResponse(res, options);
