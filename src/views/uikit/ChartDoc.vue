@@ -232,37 +232,37 @@ watch(
         <div class="col-span-12 xl:col-span-6">
             <div class="card">
                 <div class="font-semibold text-xl mb-4">Linear</div>
-                <Chart type="line" :data="lineData" :options="lineOptions"></Chart>
+                <Chart :data="lineData" :options="lineOptions" type="line"></Chart>
             </div>
         </div>
         <div class="col-span-12 xl:col-span-6">
             <div class="card">
                 <div class="font-semibold text-xl mb-4">Bar</div>
-                <Chart type="bar" :data="barData" :options="barOptions"></Chart>
+                <Chart :data="barData" :options="barOptions" type="bar"></Chart>
             </div>
         </div>
         <div class="col-span-12 xl:col-span-6">
             <div class="card flex flex-col items-center">
                 <div class="font-semibold text-xl mb-4">Pie</div>
-                <Chart type="pie" :data="pieData" :options="pieOptions"></Chart>
+                <Chart :data="pieData" :options="pieOptions" type="pie"></Chart>
             </div>
         </div>
         <div class="col-span-12 xl:col-span-6">
             <div class="card flex flex-col items-center">
                 <div class="font-semibold text-xl mb-4">Doughnut</div>
-                <Chart type="doughnut" :data="pieData" :options="pieOptions"></Chart>
+                <Chart :data="pieData" :options="pieOptions" type="doughnut"></Chart>
             </div>
         </div>
         <div class="col-span-12 xl:col-span-6">
             <div class="card flex flex-col items-center">
                 <div class="font-semibold text-xl mb-4">Polar Area</div>
-                <Chart type="polarArea" :data="polarData" :options="polarOptions"></Chart>
+                <Chart :data="polarData" :options="polarOptions" type="polarArea"></Chart>
             </div>
         </div>
         <div class="col-span-12 xl:col-span-6">
             <div class="card flex flex-col items-center">
                 <div class="font-semibold text-xl mb-4">Radar</div>
-                <Chart type="radar" :data="radarData" :options="radarOptions"></Chart>
+                <Chart :data="radarData" :options="radarOptions" type="radar"></Chart>
             </div>
         </div>
     </Fluid>

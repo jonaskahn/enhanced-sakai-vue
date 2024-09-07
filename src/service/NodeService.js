@@ -13,7 +13,12 @@ export const NodeService = {
                         data: 'Work Folder',
                         icon: 'pi pi-fw pi-cog',
                         children: [
-                            { key: '0-0-0', label: 'Expenses.doc', icon: 'pi pi-fw pi-file', data: 'Expenses Document' },
+                            {
+                                key: '0-0-0',
+                                label: 'Expenses.doc',
+                                icon: 'pi pi-fw pi-file',
+                                data: 'Expenses Document'
+                            },
                             { key: '0-0-1', label: 'Resume.doc', icon: 'pi pi-fw pi-file', data: 'Resume Document' }
                         ]
                     },
@@ -22,7 +27,14 @@ export const NodeService = {
                         label: 'Home',
                         data: 'Home Folder',
                         icon: 'pi pi-fw pi-home',
-                        children: [{ key: '0-1-0', label: 'Invoices.txt', icon: 'pi pi-fw pi-file', data: 'Invoices for this month' }]
+                        children: [
+                            {
+                                key: '0-1-0',
+                                label: 'Invoices.txt',
+                                icon: 'pi pi-fw pi-file',
+                                data: 'Invoices for this month'
+                            }
+                        ]
                     }
                 ]
             },
@@ -60,7 +72,12 @@ export const NodeService = {
                         data: 'De Niro Movies',
                         children: [
                             { key: '2-1-0', label: 'Goodfellas', icon: 'pi pi-fw pi-video', data: 'Goodfellas Movie' },
-                            { key: '2-1-1', label: 'Untouchables', icon: 'pi pi-fw pi-video', data: 'Untouchables Movie' }
+                            {
+                                key: '2-1-1',
+                                label: 'Untouchables',
+                                icon: 'pi pi-fw pi-video',
+                                data: 'Untouchables Movie'
+                            }
                         ]
                     }
                 ]

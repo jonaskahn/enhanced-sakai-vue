@@ -48,13 +48,13 @@ const dropdownItem = ref(null);
                 <div class="card flex flex-col gap-4">
                     <div class="font-semibold text-xl">Horizontal</div>
                     <div class="grid grid-cols-12 gap-2">
-                        <label for="name3" class="flex items-center col-span-12 mb-2 md:col-span-2 md:mb-0">Name</label>
+                        <label class="flex items-center col-span-12 mb-2 md:col-span-2 md:mb-0" for="name3">Name</label>
                         <div class="col-span-12 md:col-span-10">
                             <InputText id="name3" type="text" />
                         </div>
                     </div>
                     <div class="grid grid-cols-12 gap-2">
-                        <label for="email3" class="flex items-center col-span-12 mb-2 md:col-span-2 md:mb-0">Email</label>
+                        <label class="flex items-center col-span-12 mb-2 md:col-span-2 md:mb-0" for="email3">Email</label>
                         <div class="col-span-12 md:col-span-10">
                             <InputText id="email3" type="text" />
                         </div>
@@ -65,14 +65,14 @@ const dropdownItem = ref(null);
                     <div class="font-semibold text-xl">Inline</div>
                     <div class="flex flex-wrap items-start gap-4">
                         <div class="field">
-                            <label for="firstname1" class="sr-only">Firstname</label>
-                            <InputText id="firstname1" type="text" placeholder="Firstname" />
+                            <label class="sr-only" for="firstname1">Firstname</label>
+                            <InputText id="firstname1" placeholder="Firstname" type="text" />
                         </div>
                         <div class="field">
-                            <label for="lastname1" class="sr-only">Lastname</label>
-                            <InputText id="lastname1" type="text" placeholder="Lastname" />
+                            <label class="sr-only" for="lastname1">Lastname</label>
+                            <InputText id="lastname1" placeholder="Lastname" type="text" />
                         </div>
-                        <Button label="Submit" :fluid="false"></Button>
+                        <Button :fluid="false" label="Submit"></Button>
                     </div>
                 </div>
                 <div class="card flex flex-col gap-4">
@@ -108,7 +108,7 @@ const dropdownItem = ref(null);
                 <div class="flex flex-col md:flex-row gap-4">
                     <div class="flex flex-wrap gap-2 w-full">
                         <label for="state">State</label>
-                        <Select id="state" v-model="dropdownItem" :options="dropdownItems" optionLabel="name" placeholder="Select One" class="w-full"></Select>
+                        <Select id="state" v-model="dropdownItem" :options="dropdownItems" class="w-full" optionLabel="name" placeholder="Select One"></Select>
                     </div>
                     <div class="flex flex-wrap gap-2 w-full">
                         <label for="zip">Zip</label>

@@ -3,8 +3,8 @@
         <div class="font-semibold text-2xl mb-4">Documentation</div>
         <div class="font-semibold text-xl mb-4">Get Started</div>
         <p class="text-lg mb-4">
-            Sakai is an application template for Vue based on the <a href="https://github.com/vuejs/create-vue" class="font-medium text-primary hover:underline">create-vue</a>, the recommended way to start a <strong>Vite-powered</strong> Vue
-            projects. To get started, clone the <a href="https://github.com/primefaces/sakai-vue" class="font-medium text-primary hover:underline">repository</a> from GitHub and install the dependencies with npm or yarn.
+            Sakai is an application template for Vue based on the <a class="font-medium text-primary hover:underline" href="https://github.com/vuejs/create-vue">create-vue</a>, the recommended way to start a <strong>Vite-powered</strong> Vue
+            projects. To get started, clone the <a class="font-medium text-primary hover:underline" href="https://github.com/primefaces/sakai-vue">repository</a> from GitHub and install the dependencies with npm or yarn.
         </p>
         <pre class="app-code">
 <code>git clone https://github.com/primefaces/sakai-vue
@@ -33,8 +33,8 @@ npm run dev</code></pre>
 
         <div class="font-semibold text-xl mb-4">Layout Composable</div>
         <p class="text-lg mb-4">
-            The <span class="bg-highlight px-2 py-1 rounded-border not-italic text-base">src/layout/composables/layout.js</span> is a composable that manages the layout state changes including dark mode, PrimeVue theme, menu modes and states. If you
-            change the initial values like the preset or colors, make sure to apply them at PrimeVue config at main.js as well.
+            The <span class="bg-highlight px-2 py-1 rounded-border not-italic text-base">src/layout/composables/layout.js</span>
+            is a composable that manages the layout state changes including dark mode, PrimeVue theme, menu modes and states. If you change the initial values like the preset or colors, make sure to apply them at PrimeVue config at main.js as well.
         </p>
 
         <div class="font-semibold text-xl mb-4">Tailwind CSS</div>
