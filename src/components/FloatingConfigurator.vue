@@ -8,10 +8,7 @@ const { toggleDarkMode, isDarkTheme } = useLayout();
 
 <template>
     <div class="fixed flex gap-4 top-8 right-8">
-        <button class="layout-topbar-action" type="button" @click="toggleDarkMode">
-            <i :class="['pi', { 'pi-moon': isDarkTheme, 'pi-sun': !isDarkTheme }]"></i>
-        </button>
-
+        <Button :icon="isDarkTheme ? 'pi pi-moon' : 'pi pi-sun'" rounded severity="secondary" type="button" @click="toggleDarkMode" />
         <div class="relative">
             <Button
                 v-styleclass="{ selector: '@next', enterFromClass: 'hidden', enterActiveClass: 'animate-scalein', leaveToClass: 'hidden', leaveActiveClass: 'animate-fadeout', hideOnOutsideClick: true }"
