@@ -8,6 +8,9 @@
 -   [x] Route guard
 -   [x] Add service API with `axios`
 
+## Known Issues
+-   The latest PrimeVue version (>=4.0.7) broke the switching theme feature. It's not on me, but I'm on the way to fix it. 
+
 ## Also read
 
 Sakai is an application template for Vue based on the [create-vue](https://github.com/vuejs/create-vue), the recommended way to start a Vite-powered Vue projects.
